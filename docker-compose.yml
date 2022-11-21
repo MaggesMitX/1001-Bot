@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  1001-discord-bot:
+    build: ./
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+  postgres:
+    image: postgres
+    ports:
+      - '5431:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres

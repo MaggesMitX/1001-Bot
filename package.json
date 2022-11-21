@@ -1,0 +1,24 @@
+{
+  "name": "1001-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "deploy-commands": "node .\\Utils\\deploy_commands.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/00Shinigami/1001-Bot.git"
+  },
+  "author": "Team-1001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/00Shinigami/1001-Bot/issues"
+  },
+  "homepage": "https://github.com/00Shinigami/1001-Bot#readme",
+  "dependencies": {
+    "discord.js": "^14.6.0"
+  }
+}
