@@ -19,8 +19,8 @@ module.exports = {
             inline: true
           },
           {
-            name: '/Kantine',
-            value: 'Alle nützlichen Informationen über die Kantine findest du hier',
+            name: '/mensa',
+            value: 'Falls du wissen willst, was es morgen zu Essen gibt, gibt /mensa [Datum] ein!',
             inline: true
           });
 
