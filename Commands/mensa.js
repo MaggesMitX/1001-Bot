@@ -15,6 +15,9 @@ module.exports = {
     const specifiedDate = interaction.options.get('datum')?.value.trim() || new Date().toJSON().slice(0, 10);
     const dishes = await fetchMensaData(specifiedDate);
 
+    // if (dishes.length === 0)
+    //   return interaction.reply(`Für das Datum ${specifiedDate} wurden leider keine Gerichte gefunden!`);
+
     const embed = new EmbedBuilder()
       .setTitle('Mensa-Gerichte')
       .setDescription(`Gerichte in der Mensa am ${specifiedDate}`)

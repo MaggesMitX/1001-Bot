@@ -2,6 +2,8 @@ FROM node:18
 
 USER root
 
+RUN npm config set cache /tmp --global
+
 WORKDIR /app
 
 COPY package*.json ./
