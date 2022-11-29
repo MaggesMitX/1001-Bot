@@ -11,6 +11,7 @@ module.exports = {
     ),
   async execute(interaction) {
     fetchMensaData();
+    await interaction.deferReply();
 
     const specifiedDate = interaction.options.get('datum')?.value.trim() || new Date().toJSON().slice(0, 10);
     const dishes = await fetchMensaData(specifiedDate);
@@ -32,7 +33,7 @@ module.exports = {
       });
     }
 
-    await interaction.reply({
+    await interaction.editReply({
       embeds: [embed],
     });
   },
