@@ -3,7 +3,13 @@ const { token } = require('./config.json');
 const { handleCommands } = require('./Utils/command_handler');
 const { handleEvents } = require('./Utils/event_handler');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+  ],
+});
 
 client.login(token);
 
