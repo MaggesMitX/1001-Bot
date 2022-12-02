@@ -18,14 +18,14 @@ module.exports = {
       {
         activity: {
           name: 'Verzewifelt an der Mathe-Übung',
-          type: ActivityType.Playing,
+          type: 4,
         },
         status: 'online',
       },
       {
         activity: {
           name: 'Isst in der Mensa',
-          type: ActivityType.Watching,
+          type: 4,
         },
         status: 'online',
       },
