@@ -17,7 +17,7 @@ module.exports = {
       },
       {
         activity: {
-          name: 'Verzewifelt an der Mathe-Übung',
+          name: 'Verzweifelt an der Mathe-Übung',
           type: 4,
         },
         status: 'online',
@@ -26,6 +26,27 @@ module.exports = {
         activity: {
           name: 'Isst in der Mensa',
           type: 4,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'Pokémon in EBR',
+          type: ActivityType.Playing,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'am Getränkeautomaten im Gym',
+          type: ActivityType.Playing,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'mit Snapshots von Franky',
+          type: ActivityType.Playing,
         },
         status: 'online',
       },
