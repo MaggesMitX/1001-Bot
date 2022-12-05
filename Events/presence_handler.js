@@ -24,6 +24,20 @@ module.exports = {
       },
       {
         activity: {
+          name: 'Mathe(by Daniel Jung)',
+          type: ActivityType.Watching,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'Exmatrikulations PDF´s',
+          type: ActivityType.Watching,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
           name: 'Isst in der Mensa',
           type: 4,
         },
@@ -32,6 +46,13 @@ module.exports = {
       {
         activity: {
           name: 'Pokémon in EBR',
+          type: ActivityType.Playing,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'Minecraft 1vs1 mit Kai',
           type: ActivityType.Playing,
         },
         status: 'online',
