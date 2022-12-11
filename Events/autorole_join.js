@@ -3,9 +3,9 @@ const { Events } = require('discord.js');
 module.exports = {
   name: Events.GuildMemberAdd,
   once: false,
-  async execute(client) {
+  async execute(member) {
 
-    const role = client.guild.roles.cache.get("1019231681024098304");
-    await client.roles.add(role.id);
+    const role = member.guild.roles.cache.get("1019231681024098304");
+    await member.roles.add(role.id);
   },
 };
