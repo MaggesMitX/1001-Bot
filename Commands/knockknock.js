@@ -48,14 +48,6 @@ module.exports = {
         joke.name + ' ' + joke.answer,
       ].join('\n');
     }
-    //Function knock() returns the formatted joke
-    client.on('message'),
-      (message) => {
-        if (message.content.includes('/knock')) {
-          const msg = message.content.split(' ');
-
-          message.reply(knock());
-        }
-      }; //Client message
+    await interaction.reply(knock());
   }, // interaction F
 };
