@@ -4,7 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder().setName('knock').setDescription('Gibt dir einen zufälligen Witz aus'),
   async execute(interaction) {
     var jokes = [
-      { name: 'Dozen', answer: 'anybody want to let me in?' },
+      { name: 'Werner', answer: 'Wer nervt mich mit diesen Scherzen' },
       { name: 'Avenue', answer: 'knocked on this door before?' },
       { name: 'Ice Cream', answer: "if you don't let me in!" },
       { name: 'Adore', answer: 'is between us. Open up!' },
@@ -29,7 +29,7 @@ module.exports = {
       { name: 'Justin', answer: 'the neighborhood and thought Id come over.' },
       { name: 'Europe', answer: 'No, you are a poo' },
       { name: 'To', answer: 'To Whom.' },
-      { name: 'Etch', answer: 'Bless You!' },
+      { name: 'Wiebke', answer: 'Wie bekomm ich die Tür auf' },
       { name: 'Mikey', answer: 'doesnt fit through this keyhole' },
     ];
     //choosing a random joke from the array
@@ -42,9 +42,9 @@ module.exports = {
     function formatJoke(joke) {
       return [
         'Knock, knock.',
-        'Who’s there?',
+        'Wer ist da?',
         joke.name + '.',
-        joke.name + ' who?',
+        joke.name + ' wer?',
         joke.name + ' ' + joke.answer,
       ].join('\n');
     }
