@@ -66,6 +66,13 @@ module.exports = {
       },
       {
         activity: {
+          name: 'Auseinandersetzungssimulationen in EBR',
+          type: ActivityType.Playing,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
           name: 'mit Snapshots von Franky',
           type: ActivityType.Playing,
         },
