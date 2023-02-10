@@ -1,14 +1,12 @@
 const { Events } = require('discord.js');
-const { guildId } = require('../config.json');
+const botServerRoles = require('../botServers.json').serverRoles; // hier Einträge aus JSON Datei einlesen
 
 module.exports = {
   name: Events.GuildMemberAdd,
   once: false,
   async execute(member) {
-
-    if(member.guild.id !== guildId) return;
-
-    const role = member.guild.roles.cache.get("1019231681024098304");
-    await member.roles.add(role.id);
+    const role = botServerRoles[member.guild.id];
+    if(!role) return; // Hier könnte man auch einen Fehler ausgeben.
+    await member.roles.add(role);
   },
 };
