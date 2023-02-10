@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/00Shinigami/1001-Bot.git"
+    "url": "git+https://github.com/MaggesMitX/1001-Bot.git"
   },
   "author": "Team-1001",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/00Shinigami/1001-Bot/issues"
+    "url": "https://github.com/MaggesMitX/1001-Bot/issues"
   },
-  "homepage": "https://github.com/00Shinigami/1001-Bot#readme",
+  "homepage": "https://github.com/MaggesMitX/1001-Bot#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "discord.js": "^14.6.0",
