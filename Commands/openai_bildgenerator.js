@@ -45,7 +45,8 @@ module.exports = {
                 .setDescription(`Bild angefordert von ${interaction.user.username}`)
                 .setTitle(args)
                 .setImage(image)
-                .setColor("#159ac2");
+                .setColor('Random')
+                .setTimestamp(Date.now())
             await interaction.editReply({
                 embeds: [embed],
             });
