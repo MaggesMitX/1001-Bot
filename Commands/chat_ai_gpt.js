@@ -1,7 +1,7 @@
 
 const { Configuration, OpenAIApi } = require("openai");
 const { openAiKey } = require('../config.json');
-const {SlashCommandBuilder} = require("discord.js");
+const {SlashCommandBuilder, EmbedBuilder} = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -41,7 +41,20 @@ module.exports = {
                 frequency_penalty: 0,
                 presence_penalty: 0,
             });
-            await interaction.editReply(response);
+            const answer = response.data.choices[0].text;
+            const embed = new EmbedBuilder()
+                .setDescription(`Frage gestellt von ${interaction.user.username}`)
+                .setTitle(args)
+                .addFields(
+                    {name:'Antwort:', value: answer}
+                )
+                .setColor('Random')
+                .setTimestamp(Date.now())
+            await interaction.editReply({
+                embeds: [embed],});
+
+            //const answer = response.data.choices[0].text;
+            //await interaction.editReply(answer);
 
         } catch (error) {
             console.error(error);
