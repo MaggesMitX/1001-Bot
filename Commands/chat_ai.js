@@ -7,7 +7,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('ai')
         .setDescription(
-            'Frage GPT nach deinen Bedürfnissen'
+            'Frage 1001 nach deinen Bedürfnissen'
         )
         .addStringOption((option) =>
             option
@@ -35,7 +35,7 @@ module.exports = {
             const response = await openai.createCompletion({
                 model: "text-davinci-002",
                 prompt: args,
-                temperature: 0.7,
+                temperature: 0.9,
                 max_tokens: 256,
                 top_p: 1,
                 frequency_penalty: 0,
@@ -50,6 +50,7 @@ module.exports = {
                 )
                 .setColor('Random')
                 .setTimestamp(Date.now())
+                .setFooter({text: 'Vielen Dank!'})
             await interaction.editReply({
                 embeds: [embed],});
 
