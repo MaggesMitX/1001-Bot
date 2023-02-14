@@ -8,18 +8,17 @@ module.exports = {
 
     const botActivities = [
       {
-        activity: { name: 'MA1 Vorlesung', type: ActivityType.Watching },
+        activity: { name: ' Fallschirm zum Verkauf, einmal benutzt, nie geöffnet!', type: ActivityType.Playing },
         status: 'online',
       },
       {
-        activity: { name: 'AP1 Vorlesung', type: ActivityType.Watching },
+        activity: { name: 'In der Bibliothek schreien', type: ActivityType.Playing },
         status: 'online',
       },
       {
         activity: {
-          name: 'Verzweifelt an der Mathe-Übung',
-          type: 4,
-        },
+          name: '[Keyboard Interrupts]',
+          type: ActivityType.Listening,},
         status: 'online',
       },
       {
@@ -31,60 +30,80 @@ module.exports = {
       },
       {
         activity: {
-          name: 'Exmatrikulations PDF´s',
-          type: ActivityType.Watching,
+          name: 'I’m not lazy, I’m on energy saving mode',
+          type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
           name: 'Isst in der Mensa',
-          type: 4,
-        },
-        status: 'online',
-      },
-      {
-        activity: {
-          name: 'Pokémon in EBR',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Minecraft 1vs1 mit Kai',
+          name: 'Pokémon Go mit Max',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'am Getränkeautomaten im Gym',
+          name: 'Minecraft Bedwars',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Auseinandersetzungssimulationen in EBR',
-          type: ActivityType.Playing,
+          name: 'Spotting im Gym',
+          type: ActivityType.Streaming,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'mit Snapshots von Franky',
-          type: ActivityType.Playing,
+          name: 'Be the game-changer.',
+          type: ActivityType.Streaming,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'Error-404. Not found',
+          type: ActivityType.Watching,
         },
         status: 'online',
       },
       {
         activity: {
           name: 'mit brandgefährlichen C-Pointern 🔥',
+          type: ActivityType.Competing,
+        },
+        status: 'online',
+      },
+      {
+        activity: {
+          name: 'Einsätze Koordinieren 🔥',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
+      {
+        activity: {
+          name: 'Ai Funktionen überprüfen..',
+          type: ActivityType.Watching,
+        },
+        status: 'dnd',
+      },
+      {
+        activity: {
+          name: 'to Spotify',
+          type: ActivityType.Listening,},
+        status: 'online',
+      }
     ];
 
     setInterval(() => {
