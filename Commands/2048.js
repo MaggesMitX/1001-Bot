@@ -4,12 +4,7 @@ const { TwoZeroFourEight } = require('discord-gamecord');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('2048')
-        .setDescription('Spiele 2048')
-        .addUserOption((option) =>
-            option
-                .setName('opponent')
-                .setDescription('Gegner')
-        ),
+        .setDescription('Spiele 2048'),
     async execute(interaction) {
         const Game = new TwoZeroFourEight({
             message: interaction,

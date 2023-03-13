@@ -8,7 +8,7 @@ module.exports = {
         .setDescription('Spiele VierGewinnt')
         .addUserOption((option) =>
             option
-                .setName('opponent')
+                .setName('member')
                 .setDescription('Gegner')
     ),
     async execute(interaction) {
@@ -16,7 +16,7 @@ module.exports = {
         const Game = new Connect4({
             message: interaction,
             isSlashGame: true,
-            opponent: interaction.options.getUser('opponent'),
+            opponent: interaction.options.getUser('member'),
             embed: {
                 title: 'VierGewinnt Spiel',
                 statusTitle: 'Status',
