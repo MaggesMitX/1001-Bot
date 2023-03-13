@@ -19,11 +19,11 @@ module.exports = {
             value: 'Spiele Connect4 mit deinen Freunden!',
             inline: true
              })
-            .addFields({
+            /*.addFields({
                 name: 'Emojify',
                 value: 'Erzeugt dir ein Emoji',
                 inline: true
-            })
+            })*/
             .addFields({
                 name: 'FastType',
                 value: 'Tippe dem vorgegeben Text hinterher so schnell wie du kannst!',
