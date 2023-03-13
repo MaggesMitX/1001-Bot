@@ -40,7 +40,6 @@ module.exports = {
         await Game.startGame();
         await Game.on('gameOver', result => {
             //console.log(result);
-
         });
     }
 }

@@ -17,8 +17,7 @@ module.exports = {
 
         await Game.startGame();
          await Game.on('gameOver', result => {
-             interaction.editReply('Verloren')
-             console.log(result);  // =>  { result... }
+             //console.log(result);  // =>  { result... }
         });
     }
 }

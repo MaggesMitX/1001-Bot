@@ -6,6 +6,7 @@ module.exports = {
         .setName('2048')
         .setDescription('Spiele 2048'),
     async execute(interaction) {
+
         const Game = new TwoZeroFourEight({
             message: interaction,
             isSlashGame: true,
@@ -27,7 +28,7 @@ module.exports = {
         await Game.startGame();
         await Game.on('gameOver', result => {
             interaction.editReply('Verloren')
-            console.log(result);  // =>  { result... }
+            //console.log(result);  // =>  { result... }
         });
     }
 }
