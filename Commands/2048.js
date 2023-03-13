@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         const Game = new TwoZeroFourEight({
             message: interaction,
-            isSlashGame: false,
+            isSlashGame: true,
             embed: {
                 title: '2048',
                 color: '#5865F2'
