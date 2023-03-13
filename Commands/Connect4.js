@@ -1,6 +1,5 @@
 const { SlashCommandBuilder} = require('discord.js');
 const { Connect4 } = require('discord-gamecord');
-const { disableButtons } = require("discord-gamecord/utils/utils");
 
 
 module.exports = {
