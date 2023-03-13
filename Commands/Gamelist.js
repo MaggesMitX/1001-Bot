@@ -6,7 +6,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setTitle('Spiele, die du spielen kannst')
             .setThumbnail('https://cdn.discordapp.com/avatars/1044182620159869018/6196a533092726668486a50815a4b04d.webp')
-            .setDescription('Bitte gebe /[Spiel] ein, um es zu starten!')
+            .setDescription('Bitte gib /[Spiel] ein, um es zu starten!')
             .setColor('Random')
             .setTimestamp(Date.now())
             .addFields({
