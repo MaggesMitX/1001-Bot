@@ -13,10 +13,18 @@ module.exports = {
     ),
     async execute(interaction) {
 
+        const target = interaction.options.getUser('member');
+
+        if (!target) {
+            return interaction.editReply(
+                'Es wurde kein Mitspieler angegeben!'
+            );
+        }
+
         const Game = new Connect4({
             message: interaction,
             isSlashGame: true,
-            opponent: interaction.options.getUser('member'),
+            opponent: target,
             embed: {
                 title: 'VierGewinnt Spiel',
                 statusTitle: 'Status',

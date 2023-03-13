@@ -23,7 +23,7 @@ module.exports = {
 
         if (!args) {
             return interaction.editReply(
-                `Kein Text gefunden.`
+                'Es wurde kein Text angegeben!'
             );
         }
 

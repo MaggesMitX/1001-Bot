@@ -22,7 +22,7 @@ module.exports = {
 
         if (!args) {
             return interaction.editReply(
-                `Keine Beschreibung gefunden!`
+                'Es wurde keine Beschreibung angegeben!'
             );
         }
 

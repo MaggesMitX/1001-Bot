@@ -9,6 +9,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.editReply("Ich bin kaputt!");
 
+        /*
         const Game = new Fishy({
             message: interaction,
             isSlashGame: true,
@@ -32,7 +33,7 @@ module.exports = {
             noItemMessage: 'Du hast diesen Gegenstand nicht in deinem Inventar.'
         });
 
-/*
+
 // Catch Fish
         await Game.catchFish();
         await Game.on('catchFish', fishy => { player = fishy.player });

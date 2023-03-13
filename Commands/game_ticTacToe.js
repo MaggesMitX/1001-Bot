@@ -13,10 +13,18 @@ module.exports = {
         ),
     async execute(interaction) {
 
+        const target = interaction.options.getUser('member');
+
+        if (!target) {
+            return interaction.editReply(
+                'Es wurde kein Mitspieler angegeben!'
+            );
+        }
+
         const Game = new TicTacToe({
             message: interaction,
             isSlashGame: true,
-            opponent: interaction.options.getUser('member'),
+            opponent: target,
             embed: {
                 title: 'Tic Tac Toe',
                 color: '#5865F2',
