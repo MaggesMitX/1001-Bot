@@ -7,6 +7,7 @@ module.exports = {
         .setName('fishy')
         .setDescription('Spiele Fishy'),
     async execute(interaction) {
+        await interaction.editReply("Ich bin kaputt!");
 
         const Game = new Fishy({
             message: interaction,
@@ -31,6 +32,7 @@ module.exports = {
             noItemMessage: 'Du hast diesen Gegenstand nicht in deinem Inventar.'
         });
 
+/*
 // Catch Fish
         await Game.catchFish();
         await Game.on('catchFish', fishy => { player = fishy.player });
@@ -42,5 +44,6 @@ module.exports = {
 
 // PLayer Inventory
         await Game.fishyInventory();
+		*/
     }
 }

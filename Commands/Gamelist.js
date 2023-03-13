@@ -1,12 +1,12 @@
-const { SlashCommandBuilder, EmbedBuilder, Embed } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder().setName('gamelist').setDescription('Erforsche alle meine Spiele'),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const embed = new EmbedBuilder()
-            .setTitle('Spiele die du spielen kannst')
-            .setThumbnail('https://cdn.discordapp.com/avatars/1044182620159869018/6196a533092726668486a50815a4b04d.webp?')
-            .setDescription('Bitte gebe /[Spiel] ein um es zu starten!')
+            .setTitle('Spiele, die du spielen kannst')
+            .setThumbnail('https://cdn.discordapp.com/avatars/1044182620159869018/6196a533092726668486a50815a4b04d.webp')
+            .setDescription('Bitte gebe /[Spiel] ein, um es zu starten!')
             .setColor('Random')
             .setTimestamp(Date.now())
             .addFields({
@@ -19,25 +19,20 @@ module.exports = {
             value: 'Spiele Connect4 mit deinen Freunden!',
             inline: true
              })
-            /*.addFields({
-                name: 'Emojify',
-                value: 'Erzeugt dir ein Emoji',
-                inline: true
-            })*/
             .addFields({
                 name: 'FastType',
-                value: 'Tippe dem vorgegeben Text hinterher so schnell wie du kannst!',
+                value: 'Tippe den vorgegeben Text ab, so schnell wie du kannst!',
                 inline: true
             }).addFields({
                 name: 'FindEmoji',
                 value: 'Gehe auf Jagd und suche die Emojis.',
                 inline: true
             })
-            .addFields({
+          /*  .addFields({
                 name: 'Fishy',
                 value: 'Gehe zum entspannen einfach mal fischen.',
                 inline: true
-            })
+            })*/
             .addFields({
                 name: 'Flood',
                 value: 'Spiele mit den Farben!',
@@ -45,7 +40,7 @@ module.exports = {
             })
             .addFields({
                 name: 'GuessThePokemon',
-                value: 'Wenn du ein Pokemon Fan bist wirst du dieses Spiel Lieben!',
+                value: 'Wenn du ein Pokemon Fan bist, wirst du dieses Spiel lieben!',
                 inline: true
             })
             .addFields({
@@ -75,7 +70,7 @@ module.exports = {
             })
             .addFields({
                 name: 'Snake',
-                value: 'Sammel so viele Punkte wie möglich in Snake.',
+                value: 'Sammle so viele Punkte wie möglich in Snake.',
                 inline: true
             })
             .addFields({
@@ -90,12 +85,12 @@ module.exports = {
             })
             .addFields({
                 name: 'Wordle',
-                value: 'Errate ein zufälliges Wort in wordle.',
+                value: 'Errate ein zufälliges Wort in Wordle.',
                 inline: true
             })
             .addFields({
                 name: 'WouldYouRather',
-                value: 'Das oder das? Hier kannst du würdest du eher mit deinen Freunden spielen!',
+                value: 'Das oder das? Hier kannst du Würdest du eher... mit deinen Freunden spielen!',
                 inline: true
             })
         ;

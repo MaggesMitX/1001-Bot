@@ -1,5 +1,5 @@
 const { SlashCommandBuilder} = require('discord.js');
-const { FastType, Flood} = require('discord-gamecord');
+const { Flood} = require('discord-gamecord');
 
 module.exports = {
     data: new SlashCommandBuilder()
