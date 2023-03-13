@@ -15,7 +15,7 @@ module.exports = {
         const target = interaction.options.getUser('member');
 
         if (!target) {
-            return interaction.editReply(
+            return interaction.reply(
                 'Es wurde kein Mitspieler angegeben!'
             );
         }
