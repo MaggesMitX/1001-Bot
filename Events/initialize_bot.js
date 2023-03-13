@@ -6,10 +6,9 @@ module.exports = {
   name: Events.ClientReady,
   once: true,
   execute(client) {
-    client.customWords = [];
+    client.customWords = [...customWords];
     client.bannedWords = [];
     client.rateLimiter = new Map();
     bannedWords.map((word) => (client.bannedWords[word] = true));
-    customWords.map((word) => (client.customWords[word] = true));
   },
 };
