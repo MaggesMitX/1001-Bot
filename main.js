@@ -18,6 +18,7 @@ client.login(token);
 async function main() {
   await handleCommands(client);
   await handleEvents(client);
+  console.log("Ready to serve...")
 }
 
 main();
