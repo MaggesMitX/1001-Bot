@@ -12,6 +12,10 @@ module.exports = {
         status: 'online',
       },
       {
+        activity: { name: `Currently in ${client.guilds.cache.size} servers `, type: ActivityType.Playing },
+        status: 'online',
+      },
+      {
         activity: { name: 'In der Bibliothek schreien', type: ActivityType.Playing },
         status: 'online',
       },
