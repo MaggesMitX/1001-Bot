@@ -7,7 +7,7 @@ module.exports = {
     async execute(interaction){
         const Game = new Slots({
             message: interaction,
-            isSlashGame: false,
+            isSlashGame: true,
             embed: {
                 title: 'Slot Machine',
                 color: '#5865F2'
