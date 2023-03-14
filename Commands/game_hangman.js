@@ -7,11 +7,7 @@ module.exports = {
         .setDescription('Spiele Hangman'),
     async execute(interaction) {
 
-        function getRandom() {
-            let max = 4999;
-            let min = 1;
-            return Math.random() * (max - min) + min;
-        }
+        let wordToGuess = getRandomWord(interaction.client.customWords);
 
         const Game = new Hangman({
             message: interaction,
@@ -21,7 +17,7 @@ module.exports = {
                 color: '#5865F2'
             },
             hangman: { hat: '🎩', head: '😟', shirt: '👕', pants: '🩳', boots: '👞👞' },
-            customWord: interaction.client.customWords[getRandom()],
+            customWord: wordToGuess,
             timeoutTime: 60000,
             theme: 'nature',
             winMessage: 'Du hast gewonnen! Das Wort war **{word}**.',
@@ -32,7 +28,11 @@ module.exports = {
         await Game.startGame();
         await Game.on('gameOver', result => {
             interaction.editReply('Verloren')
-            console.log(result);  // =>  { result... }
+            //console.log(result);  // =>  { result... }
         });
     }
+}
+
+function getRandomWord(list) {
+    return list[Math.floor((Math.random()*list.length))];
 }
