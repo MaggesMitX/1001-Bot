@@ -5,7 +5,7 @@ module.exports = {
   async execute(interaction, client) {
     const embed = new EmbedBuilder()
           .setTitle('Prüfungs- und Studierendenservice Online')
-          .setDescription('Schau mal nach was es hier gibt..')
+          .setDescription('Schau mal nach, was es hier gibt..')
           .setColor('Random')
           .setTimestamp(Date.now())
           .addFields({

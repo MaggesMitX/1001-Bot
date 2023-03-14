@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('imagine')
         .setDescription(
-            'Lässt Dir von OpenAI ein Bild generieren'
+            'Lässt dir von OpenAI ein Bild generieren'
         )
         .addStringOption((option) =>
             option
