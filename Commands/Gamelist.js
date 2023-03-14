@@ -16,7 +16,7 @@ module.exports = {
             })
             .addFields({
             name: 'Connect4',
-            value: 'Spiele Connect4 mit deinen Freunden!',
+            value: 'Spiele Connect4 mit deinen Freunden! (Duo-Modus)',
             inline: true
              })
             .addFields({
@@ -59,8 +59,8 @@ module.exports = {
                 inline: true
             })
             .addFields({
-                name: 'RockPaperScissors',
-                value: 'Schere, Stein, Papier',
+                name: 'SchereSteinPapier',
+                value: 'Schere, Stein, Papier! (Duo-Modus)',
                 inline: true
             })
             .addFields({
@@ -75,7 +75,7 @@ module.exports = {
             })
             .addFields({
                 name: 'TicTacToe',
-                value: 'Spiele TicTacToe gegen deine Freunde.',
+                value: 'Spiele TicTacToe gegen deine Freunde! (Duo-Modus)',
                 inline: true
             })
             .addFields({
