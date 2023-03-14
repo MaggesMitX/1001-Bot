@@ -7,7 +7,7 @@ module.exports = {
         .setName('fishy')
         .setDescription('Spiele Fishy'),
     async execute(interaction) {
-        await interaction.reply("Ich bin kaputt! ⚠");
+        await interaction.reply("Dieses Spiel wurde noch nicht veröffentlich! ⛔");
 
         /*
         const Game = new Fishy({
