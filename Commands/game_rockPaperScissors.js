@@ -5,6 +5,9 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('rockpaperscissor')
         .setDescription('Spiele Schere, Stein, Papier')
+        .setNameLocalizations({
+            de: 'scheresteinpapier',
+        })
         .addUserOption((option) =>
             option
                 .setName('member')
@@ -27,12 +30,14 @@ module.exports = {
             embed: {
                 title: 'Schere, Stein, Papier',
                 color: '#5865F2',
-                description: 'Press a button below to make a choice.'
+                description: 'Wähle über die Buttons deine Auswahl!'
             },
             buttons: {
-                rock: 'Rock',
-                paper: 'Paper',
-                scissors: 'Scissors'
+                rock: 'Stein',
+                paper: 'Papier',
+                scissors: 'Schere',
+                accept: 'Annehmen',
+                reject: 'Ablehnen'
             },
             emojis: {
                 rock: '🌑',
@@ -46,7 +51,10 @@ module.exports = {
             winMessage: '**{player}** hat das Spiel gewonnen, herzlichen Glückwunsch!',
             tieMessage: 'Unentschieden! Keiner hat gewonnen!',
             timeoutMessage: 'Das Spiel wurde nicht zu Ende gespielt! Keiner hat das Spiel gewonnen!',
-            playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.'
+            requestMessage: '{player} hat dich zu **Schere Stein Papier** eingeladen.',
+            rejectMessage: 'Der Spieler hat deine Einladung zu **Schere Stein Papier** abgelehnt.',
+            playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.',
+            reqTimeoutMessage: 'Der Spieler hat die Einladung nicht rechtzeitig angenommen.',
         });
 
         await Game.startGame();

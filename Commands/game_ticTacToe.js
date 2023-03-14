@@ -44,7 +44,14 @@ module.exports = {
             winMessage: '{emoji} | **{player}** hat das Spiel gewonnen!',
             tieMessage: 'Unentschieden! Keiner hat gewonnen!',
             timeoutMessage: 'Das Spiel wurde nicht zu Ende gespielt! Keiner hat das Spiel gewonnen!',
-            playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.'
+            requestMessage: '{player} hat dich zu **Tic Tac Toe** eingeladen.',
+            rejectMessage: 'Der Spieler hat deine Einladung zu **Tic Tac Toe** abgelehnt.',
+            playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.',
+            reqTimeoutMessage: 'Der Spieler hat die Einladung nicht rechtzeitig angenommen.',
+            buttons: {
+                accept: 'Annehmen',
+                reject: 'Ablehnen'
+            },
         });
 
         await Game.startGame();

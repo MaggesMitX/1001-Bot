@@ -12,7 +12,7 @@ module.exports = {
             embed: {
                 title: 'Minesweeper',
                 color: '#5865F2',
-                description: 'Klicken Sie auf die Schaltflächen, um die Blöcke mit Ausnahme der Minen aufzudecken.'
+                description: 'Klicke auf die Schaltflächen, um die Blöcke (mit Ausnahme der Minen!) aufzudecken.'
             },
             emojis: { flag: '🚩', mine: '💣' },
             mines: 5,

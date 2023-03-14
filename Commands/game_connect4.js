@@ -41,8 +41,15 @@ module.exports = {
             turnMessage: '{emoji} | **{player}** ist dran',
             winMessage: '{emoji} | **{player}** hat VierGewinnt gewonnen.',
             tieMessage: 'Das Spiel steht unentschieden! Keiner hat das Spiel gewonnen!',
+            requestMessage: '{player} hat dich zu **Connect4** eingeladen.',
+            rejectMessage: 'Der Spieler hat deine Einladung zu **Connect4** abgelehnt.',
             timeoutMessage: 'Das Spiel wurde nicht zu Ende gespielt! Keiner hat das Spiel gewonnen!',
-            playerOnlyMessage: 'Nur {player} und {opponent} können diese Schaltflächen verwenden.'
+            playerOnlyMessage: 'Nur {player} und {opponent} können diese Schaltflächen verwenden.',
+            reqTimeoutMessage: 'Der Spieler hat die Einladung nicht rechtzeitig angenommen.',
+            buttons: {
+                accept: 'Annehmen',
+                reject: 'Ablehnen'
+            },
         });
 
         await Game.startGame();
