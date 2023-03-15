@@ -1,16 +1,15 @@
 const { Collection } = require('discord.js');
 const path = require('path');
-const fs = require('fs');
+const glob = require('glob');
 
 async function handleCommands(client) {
   client.commands = new Collection();
 
   const commandsPath = path.join(__dirname, '../Commands');
-  const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.js'));
+  const commandFiles = await glob(`${commandsPath}/**/*.js`);
 
   for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command = require(filePath);
+    const command = require(file);
 
     if (!('data' in command && 'execute' in command)) {
       return console.log(
