@@ -12,13 +12,12 @@ module.exports = {
     //Bots are allowed to spam
     if (message.author.bot) return;
 
-    //Administrator has no rate limit
-    if (message.member.permissionsIn(message.channel).has(PermissionsBitField.Flags.Administrator)) return;
+    //Users with ManageMessages permission do not have a rate limit
+    if (message.member.permissionsIn(message.channel).has(PermissionsBitField.Flags.ModerateMembers)) return;
 
     //Check if bot has permission to perform actions
-    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) { console.log("has no permission to manage messages"); return; }
-    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ModerateMembers)) { console.log("has no permission to moderate members"); return; }
-
+    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
+    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ModerateMembers)) return;
 
     const user = await message.guild.members.fetch(message.member.user);
     const client = message.client;

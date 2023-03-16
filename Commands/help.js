@@ -15,7 +15,7 @@ module.exports = {
       .setTimestamp(Date.now())
       .addFields({
       name: 'Wichtig!',
-      value: 'Falls du weitere Hilfe benötigst melde dich hier https://discord.gg/mMp4DTS4Qq !',
+      value: 'Falls du weitere Hilfe benötigst, melde dich hier https://discord.gg/mMp4DTS4Qq !',
       inline: true
     });
     commands.map((command) => {

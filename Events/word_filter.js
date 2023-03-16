@@ -7,7 +7,7 @@ module.exports = {
     //Bots are allowed to spam
     if (message.author.bot) return;
 
-    //Users with ManageMessages permission have no rate limit
+    //Users with ManageMessages permission do not have a word filter
     if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
 
     //Check if bot has permission to perform actions
@@ -16,7 +16,7 @@ module.exports = {
 
     for (const word of message.content.split(' ')) {
       if (message.client.bannedWords[word.toLowerCase()]) {
-        const msgToDelete = await message.reply("Deine Nachricht enthielt unangemessene Sprache und wurde gelöscht.").catch(err => console.log(err));
+        const msgToDelete = await message.reply("Deine Nachricht enthielt unangemessene Sprache und wurde gelöscht.");
         await message.delete();
         setTimeout(async () => {
           await msgToDelete.delete().catch(err => console.log(err));
