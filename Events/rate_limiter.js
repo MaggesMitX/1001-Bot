@@ -35,7 +35,9 @@ module.exports = {
         `Der User ${user.user.username}#${user.user.discriminator} (${user.user.id}) wurde für ${
           timeoutLength / 1000
         } Sekunden wegen Spamming getimeouted.`
-      );
+      ).catch(error =>{
+        console.log(error);
+      });
     }
 
     client.rateLimiter.set(user.id, { ...userData, timestamp: Date.now() });
