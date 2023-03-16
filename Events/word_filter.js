@@ -7,7 +7,8 @@ module.exports = {
     //Bots are allowed to spam
     if (message.author.bot) return;
 
-    if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return; //ManageMessages users are bypassed
+    //ManageMessages users are bypassed
+    if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
 
     for (const word of message.content.split(' ')) {
       if (message.client.bannedWords[word.toLowerCase()]) {
