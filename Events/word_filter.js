@@ -1,12 +1,14 @@
-const { Events } = require('discord.js');
+const { Events, PermissionsBitField} = require('discord.js');
 
 module.exports = {
   name: Events.MessageCreate,
   once: false,
   async execute(message) {
-    if (message.author.bot){
-      return;
-    }
+    //Bots are allowed to spam
+    if (message.author.bot) return;
+
+    if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return; //ManageMessages users are bypassed
+
     for (const word of message.content.split(' ')) {
       if (message.client.bannedWords[word.toLowerCase()]) {
         const msgToDelete = await message.reply("Deine Nachricht enthielt unangemessene Sprache und wurde gelöscht.").catch(err => console.log(err));
@@ -17,5 +19,6 @@ module.exports = {
         return;
       }
     }
+
   },
 };
