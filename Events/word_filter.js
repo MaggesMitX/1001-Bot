@@ -16,6 +16,7 @@ module.exports = {
 
     for (const word of message.content.split(' ')) {
       if (message.client.bannedWords[word.toLowerCase()]) {
+        console.log(`Found bad word ${word} in badword list at position ${message.client.bannedWords.indexOf(word.toLowerCase())} in message ${message.content}`);
         const msgToDelete = await message.reply("Deine Nachricht enthielt unangemessene Sprache und wurde gelöscht.");
         await message.delete();
         setTimeout(async () => {
