@@ -10,6 +10,11 @@ module.exports = {
     //ManageMessages users are bypassed
     if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
 
+    //Check if bot has permission to perform actions
+    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) { console.log("has no permission to manage messages"); return; }
+    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ModerateMembers)) { console.log("has no permission to moderate members"); return; }
+
+
     for (const word of message.content.split(' ')) {
       if (message.client.bannedWords[word.toLowerCase()]) {
         const msgToDelete = await message.reply("Deine Nachricht enthielt unangemessene Sprache und wurde gelöscht.").catch(err => console.log(err));
