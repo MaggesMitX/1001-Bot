@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, Embed } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -12,8 +12,12 @@ module.exports = {
       .setThumbnail(interaction.client.user.displayAvatarURL())
       .setDescription('Eine Liste mit allen Befehlen!')
       .setColor('Random')
-      .setTimestamp(Date.now());
-
+      .setTimestamp(Date.now())
+      .addFields({
+      name: 'Wichtig!',
+      value: 'Falls du weitere Hilfe benötigst melde dich hier https://discord.gg/mMp4DTS4Qq !',
+      inline: true
+    });
     commands.map((command) => {
       embed.addFields({
         name: command.data.name,
