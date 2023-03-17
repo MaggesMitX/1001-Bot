@@ -12,6 +12,7 @@ module.exports = {
             option
                 .setName('member')
                 .setDescription('Gegner')
+                .setRequired(true)
         ),
     async execute(interaction) {
 

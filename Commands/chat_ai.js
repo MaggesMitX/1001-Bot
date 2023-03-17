@@ -15,6 +15,7 @@ module.exports = {
                 .setDescription(
                     'ChatGPT AI Funktion, schieß einfach drauf los...'
                 )
+                .setRequired(true)
         ),
     async execute(interaction) {
         const args = interaction.options.get('frage')?.value.trim();

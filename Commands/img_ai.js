@@ -14,6 +14,7 @@ module.exports = {
                 .setDescription(
                     'Bildbeschreibung, lass deinen Gefühlen freien lauf...'
                 )
+                .setRequired(true)
         ),
     async execute(interaction) {
         const args = interaction.options.get('beschreibung')?.value.trim();
