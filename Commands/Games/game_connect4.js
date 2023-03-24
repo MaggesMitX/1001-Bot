@@ -6,6 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('connect4')
         .setDescription('Spiele VierGewinnt')
+        .setDMPermission(false)
         .addUserOption((option) =>
             option
                 .setName('member')

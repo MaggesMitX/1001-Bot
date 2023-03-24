@@ -5,6 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('rockpaperscissor')
         .setDescription('Spiele Schere, Stein, Papier')
+        .setDMPermission(false)
         .setNameLocalizations({
             de: 'scheresteinpapier',
         })
