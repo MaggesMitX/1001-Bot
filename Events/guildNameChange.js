@@ -1,27 +1,28 @@
-const { Events } = require('discord.js');
+import { Events } from 'discord.js';
 
-
-module.exports = {
+export default {
   name: Events.GuildUpdate,
   once: false,
   async execute(guild) {
     //check if database object exists
-    if(!guild.client.prisma) return;
+    if (!guild.client.prisma) return;
 
     let oldName = guild.name;
     let newName = guild.commands.guild.name; //keine Ahnung wieso
 
-    if(oldName === newName) return;
+    if (oldName === newName) return;
 
     try {
       await guild.client.prisma.server.upsert({
         where: {
           serverid: guild.id,
         },
-        update: { //wenn Eintrag existiert
+        update: {
+          //wenn Eintrag existiert
           name: newName,
         },
-        create: { //wenn kein Eintrag existiert
+        create: {
+          //wenn kein Eintrag existiert
           serverid: guild.id,
           name: newName,
         },
@@ -29,6 +30,5 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-
   },
 };

@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { WouldYouRather } = require('discord-gamecord');
+import { SlashCommandBuilder } from 'discord.js';
+import { WouldYouRather } from 'discord-gamecord';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder().setName('wouldyourather').setDescription('Spiele WouldYouRather'),
   async execute(interaction) {
     const Game = new WouldYouRather({

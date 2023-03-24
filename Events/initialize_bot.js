@@ -1,14 +1,14 @@
-const { Events } = require('discord.js');
-const bannedWords = require('../banned_words.json').words;
-const customWords = require('../custom_words.json').words;
+import { Events } from 'discord.js';
+import * as bannedWordList from '../banned_words.json' assert { type: 'json' };
+import * as customWordList from '../custom_words.json' assert { type: 'json' };
 
-module.exports = {
+export default {
   name: Events.ClientReady,
   once: true,
   execute(client) {
-    client.customWords = [...customWords];
+    client.customWords = [...customWordList.default.words];
     client.bannedWords = [];
     client.rateLimiter = new Map();
-    bannedWords.map((word) => (client.bannedWords[word] = true));
+    bannedWordList.default.words.map((word) => (client.bannedWords[word] = true));
   },
 };
