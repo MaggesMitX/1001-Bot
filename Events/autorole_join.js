@@ -1,17 +1,36 @@
-const { Events } = require('discord.js');
-const botServerRoles = require('../botServers.json').serverRoles; // hier Einträge aus JSON Datei einlesen
+const { Events, PermissionsBitField} = require('discord.js');
+
+const { prisma } = require('../main.js');
 
 module.exports = {
   name: Events.GuildMemberAdd,
   once: false,
   async execute(member) {
-    //TODO: check if bot has permission to add roles to members
-    //    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)) return;
+    //TODO: check if bot has permission to assign roles
+   // if(!member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)) return;
 
-    const role = botServerRoles[member.guild.id];
+    if(!prisma) {
+      return;
+    }
 
-    if(!role) return;
+    try {
+      const roleId = await prisma.server.findUnique({
+        where: {
+          serverid: member.guild.id,
+        },
+        select: {
+          autorole: true,
+        }
+      });
 
-    await member.roles.add(role);
+      if(!roleId) return;
+      if(!roleId.autorole) return;
+
+      await member.roles.add(roleId.autorole);
+    } catch (error) {
+      console.log(error);
+    }
+
+
   },
 };

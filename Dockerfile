@@ -7,6 +7,7 @@ RUN npm config set cache /tmp --global
 WORKDIR /app
 
 COPY package*.json ./
+COPY prisma ./prisma/
 
 RUN npm install
 
