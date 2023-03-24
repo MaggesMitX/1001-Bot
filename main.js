@@ -25,4 +25,10 @@ async function main() {
   await handleEvents(client);
 }
 
-main();
+main().then( async () => {
+  prisma.$disconnect();
+});
+
+
+
+
