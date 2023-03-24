@@ -1,20 +1,16 @@
 
 const { Configuration, OpenAIApi } = require("openai");
 const { openAiKey } = require('../config.json');
-const {SlashCommandBuilder, EmbedBuilder} = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ai')
-        .setDescription(
-            'Frage 1001 nach deinen Bedürfnissen'
-        )
+        .setDescription('Frage 1001 nach deinen Bedürfnissen')
         .addStringOption((option) =>
             option
                 .setName('frage')
-                .setDescription(
-                    'ChatGPT AI Funktion, schieß einfach drauf los...'
-                )
+                .setDescription('ChatGPT AI Funktion, schieß einfach drauf los...')
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -22,11 +18,7 @@ module.exports = {
 
         await interaction.deferReply();
 
-        if (!args) {
-            return interaction.editReply(
-                'Es wurde kein Text angegeben!'
-            );
-        }
+        if (!args) return interaction.editReply('Es wurde kein Text angegeben!');
 
         try {
             const configuration = new Configuration({
@@ -53,10 +45,9 @@ module.exports = {
                 .setTimestamp(Date.now())
                 .setFooter({text: 'Vielen Dank!'})
             await interaction.editReply({
-                embeds: [embed],});
+                embeds: [embed],
+            });
 
-            //const answer = response.data.choices[0].text;
-            //await interaction.editReply(answer);
 
         } catch (error) {
             console.error(error);
