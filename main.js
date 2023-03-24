@@ -7,7 +7,6 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -20,14 +19,10 @@ const client = new Client({
 
 client.login(token);
 
-
-
 async function main() {
+  client.prisma = prisma;
   await handleCommands(client);
   await handleEvents(client);
 }
 
 main();
-
-module.exports = { prisma };
-

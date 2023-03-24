@@ -1,20 +1,17 @@
 const { Events, PermissionsBitField} = require('discord.js');
 
-const { prisma } = require('../main.js');
-
 module.exports = {
   name: Events.GuildMemberAdd,
   once: false,
   async execute(member) {
-    //TODO: check if bot has permission to assign roles
-   // if(!member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)) return;
+    //check if bot has permission to assign roles
+    if(!member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageRoles)) return;
 
-    if(!prisma) {
-      return;
-    }
+    //check if database object exists
+    if(!member.client.prisma) return;
 
     try {
-      const roleId = await prisma.server.findUnique({
+      const roleIdObject = await member.client.prisma.server.findUnique({
         where: {
           serverid: member.guild.id,
         },
@@ -23,10 +20,14 @@ module.exports = {
         }
       });
 
-      if(!roleId) return;
-      if(!roleId.autorole) return;
+      if (!roleIdObject) return;
+      if (!roleIdObject.autorole) return;
 
-      await member.roles.add(roleId.autorole);
+
+      //failes when role is higher than bot role
+      await member.roles.add(roleIdObject.autorole);
+
+
     } catch (error) {
       console.log(error);
     }

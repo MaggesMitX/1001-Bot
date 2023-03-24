@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 
-const { prisma } = require('../main.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,18 +18,19 @@ module.exports = {
             let serverName = interaction.guild.name;
             let roleId = interaction.options.get('serverid')?.value.trim();
 
-            if(!interaction.guild.roles.cache.find(x => x.id === roleId)) {
+            if(!interaction.guild.roles.cache.get(roleId)) {
                 await interaction.editReply("Die Gruppe wurde nicht gefunden!");
                 return;
             }
 
-            if(!prisma) {
+            //check if database object exists
+            if(!interaction.client.prisma) {
                 await interaction.editReply("Derzeit besteht keine Datenbankverbindung!");
                 return;
             }
 
             try {
-                await prisma.server.upsert({
+                await interaction.client.prisma.server.upsert({
                     where: {
                       serverid: serverId
                     },
@@ -49,8 +49,6 @@ module.exports = {
                 await interaction.editReply("Es ist ein Fehler beim Setzen der AutoRole aufgetreten!");
                 console.log(error);
             }
-
-
 
     },
 };
