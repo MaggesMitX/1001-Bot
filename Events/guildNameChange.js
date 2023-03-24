@@ -11,6 +11,8 @@ module.exports = {
     let oldName = guild.name;
     let newName = guild.commands.guild.name; //keine Ahnung wieso
 
+    if(oldName === newName) return;
+
     try {
       await guild.client.prisma.server.upsert({
         where: {
