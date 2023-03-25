@@ -2,7 +2,7 @@ const {SlashCommandBuilder, EmbedBuilder} = require('discord.js');
 const got = require('got');
 
 module.exports = {
-    data: new SlashCommandBuilder().setName('meme').setDescription('gibt dir die neuesten Memes'),
+    data: new SlashCommandBuilder().setName('meme').setDescription('zufällige memes from Reddit'),
     async execute(interaction) {
         const embed = new EmbedBuilder();
         got('https://www.reddit.com/r/memes/random/.json')
