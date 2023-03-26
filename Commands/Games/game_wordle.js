@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Wordle } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('wordle').setDescription('Spiele Wordle'),
+  data: new SlashCommandBuilder().setName('wordle').setDescription('Spiele Wordle').setDMPermission(false),
   async execute(interaction) {
     const Game = new Wordle({
       message: interaction,

@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { FastType } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('fasttype').setDescription('Spiele FastType'),
+  data: new SlashCommandBuilder().setName('fasttype').setDescription('Spiele FastType').setDMPermission(false),
   async execute(interaction) {
     const Game = new FastType({
       message: interaction,

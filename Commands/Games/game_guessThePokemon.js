@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { GuessThePokemon } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('guessthepokemon').setDescription('Spiele GuessThePokemon'),
+  data: new SlashCommandBuilder().setName('guessthepokemon').setDescription('Spiele GuessThePokemon').setDMPermission(false),
   async execute(interaction) {
     const Game = new GuessThePokemon({
       message: interaction,

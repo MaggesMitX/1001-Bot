@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Minesweeper } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('minesweeper').setDescription('Spiele Minesweeper'),
+  data: new SlashCommandBuilder().setName('minesweeper').setDescription('Spiele Minesweeper').setDMPermission(false),
   async execute(interaction) {
     const Game = new Minesweeper({
       message: interaction,

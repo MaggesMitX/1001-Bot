@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
 export default {
-  data: new SlashCommandBuilder().setName('gamelist').setDescription('Erforsche alle meine Spiele'),
+  data: new SlashCommandBuilder().setName('gamelist').setDescription('Erforsche alle meine Spiele').setDMPermission(false),
   async execute(interaction) {
     const embed = new EmbedBuilder()
       .setTitle('Spiele, die du spielen kannst')

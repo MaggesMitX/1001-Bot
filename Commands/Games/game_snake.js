@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Snake } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('snake').setDescription('Spiele Snake'),
+  data: new SlashCommandBuilder().setName('snake').setDescription('Spiele Snake').setDMPermission(false),
   async execute(interaction) {
     const Game = new Snake({
       message: interaction,

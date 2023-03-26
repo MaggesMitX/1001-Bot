@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Flood } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('flood').setDescription('Spiele Flood'),
+  data: new SlashCommandBuilder().setName('flood').setDescription('Spiele Flood').setDMPermission(false),
   async execute(interaction) {
     const Game = new Flood({
       message: interaction,

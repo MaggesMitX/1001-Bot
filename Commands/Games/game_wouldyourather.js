@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { WouldYouRather } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('wouldyourather').setDescription('Spiele WouldYouRather'),
+  data: new SlashCommandBuilder().setName('wouldyourather').setDescription('Spiele WouldYouRather').setDMPermission(false),
   async execute(interaction) {
     const Game = new WouldYouRather({
       message: interaction,

@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { MatchPairs } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('matchpairs').setDescription('Spiele MatchPairs'),
+  data: new SlashCommandBuilder().setName('matchpairs').setDescription('Spiele MatchPairs').setDMPermission(false),
   async execute(interaction) {
     const Game = new MatchPairs({
       message: interaction,

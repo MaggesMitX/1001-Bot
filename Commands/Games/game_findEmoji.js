@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { FindEmoji } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('findemoji').setDescription('Spiele FindEmoji'),
+  data: new SlashCommandBuilder().setName('findemoji').setDescription('Spiele FindEmoji').setDMPermission(false),
   async execute(interaction) {
     const Game = new FindEmoji({
       message: interaction,

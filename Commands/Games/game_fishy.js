@@ -3,7 +3,7 @@ import { Fishy } from 'discord-gamecord';
 const player = {};
 
 export default {
-  data: new SlashCommandBuilder().setName('fishy').setDescription('Spiele Fishy'),
+  data: new SlashCommandBuilder().setName('fishy').setDescription('Spiele Fishy').setDMPermission(false),
   async execute(interaction) {
     await interaction.reply('Dieses Spiel wurde noch nicht veröffentlicht! ⛔');
 

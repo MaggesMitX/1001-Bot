@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Hangman } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('hangman').setDescription('Spiele Hangman'),
+  data: new SlashCommandBuilder().setName('hangman').setDescription('Spiele Hangman').setDMPermission(false),
   async execute(interaction) {
     let wordToGuess = getRandomWord(interaction.client.customWords);
 

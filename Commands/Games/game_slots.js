@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Slots } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('slots').setDescription('Spiele Slots'),
+  data: new SlashCommandBuilder().setName('slots').setDescription('Spiele Slots').setDMPermission(false),
   async execute(interaction) {
     const Game = new Slots({
       message: interaction,

@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { TwoZeroFourEight } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('2048').setDescription('Spiele 2048'),
+  data: new SlashCommandBuilder().setName('2048').setDescription('Spiele 2048').setDMPermission(false),
   async execute(interaction) {
     const Game = new TwoZeroFourEight({
       message: interaction,

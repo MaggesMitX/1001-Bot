@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { Trivia } from 'discord-gamecord';
 
 export default {
-  data: new SlashCommandBuilder().setName('trivia').setDescription('Spiele Trivia'),
+  data: new SlashCommandBuilder().setName('trivia').setDescription('Spiele Trivia').setDMPermission(false),
   async execute(interaction) {
     const Game = new Trivia({
       message: interaction,
