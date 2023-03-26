@@ -8,8 +8,8 @@ export default {
     .setDMPermission(false)
     .addStringOption((option) =>
       option
-        .setName('serverid')
-        .setDescription('Setze die Rollen ID, welche User beim Joinen erhalten sollen')
+        .setName('roleid')
+        .setDescription('Setze die Rollen ID, welche User beim Joinen erhalten sollen. Zum Entfernen 0 benutzten!')
         .setRequired(true)
     ),
 
@@ -18,7 +18,35 @@ export default {
 
     let serverId = interaction.guild.id.toString();
     let serverName = interaction.guild.name;
-    let roleId = interaction.options.get('serverid')?.value.trim();
+    let roleId = interaction.options.get('roleid')?.value.trim();
+
+    const removeKeywords = ["null", "0", "remove"];
+
+    if (removeKeywords.indexOf(roleId) > -1) {
+      try {
+        await interaction.client.prisma.server.upsert({
+          where: {
+            serverid: serverId,
+          },
+          update: {
+            //wenn Eintrag existiert
+            autorole: null,
+          },
+          create: {
+            //wenn kein Eintrag existiert
+            serverid: serverId,
+            name: serverName,
+            autorole: null,
+          },
+        });
+
+        await interaction.editReply(`Der Eintrag für ${serverName} wurde gelöscht!`);
+      } catch (error) {
+        await interaction.editReply('Es ist ein Fehler beim Löschen der AutoRole aufgetreten!');
+        console.log(error);
+      }
+      return;
+    }
 
     if (!interaction.guild.roles.cache.get(roleId)) {
       await interaction.editReply('Die Gruppe wurde nicht gefunden!');
