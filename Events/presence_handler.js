@@ -1,6 +1,6 @@
-const { Events, ActivityType } = require('discord.js');
+import { Events, ActivityType } from 'discord.js';
 
-module.exports = {
+export default {
   name: Events.ClientReady,
   once: true,
   execute(client) {
@@ -22,7 +22,8 @@ module.exports = {
       {
         activity: {
           name: '[Keyboard Interrupts]',
-          type: ActivityType.Listening,},
+          type: ActivityType.Listening,
+        },
         status: 'online',
       },
       {
@@ -105,14 +106,14 @@ module.exports = {
       {
         activity: {
           name: 'to Spotify',
-          type: ActivityType.Listening,},
+          type: ActivityType.Listening,
+        },
         status: 'online',
-      }
+      },
     ];
 
     setInterval(() => {
-      const randomActivity =
-        botActivities[Math.floor(Math.random() * botActivities.length)];
+      const randomActivity = botActivities[Math.floor(Math.random() * botActivities.length)];
 
       client.user.setPresence({
         activities: [randomActivity.activity],

@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
+  "type": "module",
   "scripts": {
-    "start": "node main.js",
+    "start": "npm run database-generate && node main.js",
+    "database-schema": "npx prisma migrate dev --name init",
+    "database-generate": "npx prisma generate",
     "deploy-commands": "node .\\Utils\\deploy_commands.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,12 +22,14 @@
   },
   "homepage": "https://github.com/MaggesMitX/1001-Bot#readme",
   "dependencies": {
+    "@prisma/client": "^4.11.0",
     "axios": "^1.3.2",
     "cheerio": "^1.0.0-rc.12",
     "discord-gamecord": "^4.3.0",
     "discord.js": "^14.6.0",
     "glob": "^9.3.0",
     "node-fetch": "^2.6.7",
-    "openai": "^3.1.0"
+    "openai": "^3.1.0",
+    "prisma": "^4.11.0"
   }
 }

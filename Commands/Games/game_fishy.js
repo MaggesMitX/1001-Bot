@@ -1,15 +1,13 @@
-const { SlashCommandBuilder} = require('discord.js');
-const { Fishy } = require('discord-gamecord');
-let player = {};
+import { SlashCommandBuilder } from 'discord.js';
+import { Fishy } from 'discord-gamecord';
+const player = {};
 
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('fishy')
-        .setDescription('Spiele Fishy'),
-    async execute(interaction) {
-        await interaction.reply("Dieses Spiel wurde noch nicht veröffentlicht! ⛔");
+export default {
+  data: new SlashCommandBuilder().setName('fishy').setDescription('Spiele Fishy'),
+  async execute(interaction) {
+    await interaction.reply('Dieses Spiel wurde noch nicht veröffentlicht! ⛔');
 
-        /*
+    /*
         const Game = new Fishy({
             message: interaction,
             isSlashGame: true,
@@ -46,5 +44,5 @@ module.exports = {
 // PLayer Inventory
         await Game.fishyInventory();
 		*/
-    }
-}
+  },
+};

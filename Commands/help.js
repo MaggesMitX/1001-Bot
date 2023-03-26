@@ -1,9 +1,7 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
-module.exports = {
-  data: new SlashCommandBuilder()
-    .setName('help')
-    .setDescription('Öffnet die Hilfe mit allen Befehlen'),
+export default {
+  data: new SlashCommandBuilder().setName('help').setDescription('Öffnet die Hilfe mit allen Befehlen'),
   async execute(interaction) {
     const { commands } = interaction.client;
 
@@ -14,10 +12,10 @@ module.exports = {
       .setColor('Random')
       .setTimestamp(Date.now())
       .addFields({
-      name: 'Wichtig!',
-      value: 'Falls du weitere Hilfe benötigst, melde dich hier https://discord.gg/mMp4DTS4Qq !',
-      inline: true
-    });
+        name: 'Wichtig!',
+        value: 'Falls du weitere Hilfe benötigst, melde dich hier https://discord.gg/mMp4DTS4Qq !',
+        inline: true,
+      });
     commands.map((command) => {
       embed.addFields({
         name: command.data.name,

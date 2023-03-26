@@ -1,11 +1,11 @@
-const { Events, PermissionsBitField } = require('discord.js');
+import { Events, PermissionsBitField } from 'discord.js';
 
 const rateLimitInterval = 3000;
 const rateLimitMaxMessages = 3;
 const resetInterval = 10000;
 const timeoutLength = 9000;
 
-module.exports = {
+export default {
   name: Events.MessageCreate,
   once: false,
   async execute(message) {
@@ -16,8 +16,8 @@ module.exports = {
     if (message.member.permissionsIn(message.channel).has(PermissionsBitField.Flags.ModerateMembers)) return;
 
     //Check if bot has permission to perform actions
-    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
-    if(!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ModerateMembers)) return;
+    if (!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
+    if (!message.member.guild.members.me.permissions.has(PermissionsBitField.Flags.ModerateMembers)) return;
 
     const user = await message.guild.members.fetch(message.member.user);
     const client = message.client;
@@ -37,14 +37,16 @@ module.exports = {
 
     if (userData.messagsSent > rateLimitMaxMessages) {
       await message.reply('Bitte passe deine Chatgeschwindigkeit an! 🤠');
-      await user.timeout(
-        timeoutLength,
-        `Der User ${user.user.username}#${user.user.discriminator} (${user.user.id}) wurde für ${
-          timeoutLength / 1000
-        } Sekunden wegen Spamming getimeouted.`
-      ).catch(error =>{
-        console.log(error);
-      });
+      await user
+        .timeout(
+          timeoutLength,
+          `Der User ${user.user.username}#${user.user.discriminator} (${user.user.id}) wurde für ${
+            timeoutLength / 1000
+          } Sekunden wegen Spamming getimeouted.`
+        )
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
     client.rateLimiter.set(user.id, { ...userData, timestamp: Date.now() });

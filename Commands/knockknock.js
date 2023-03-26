@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
+import { SlashCommandBuilder } from 'discord.js';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder().setName('knock').setDescription('Gibt dir einen zufälligen Witz aus'),
   async execute(interaction) {
     var jokes = [
@@ -40,13 +40,9 @@ module.exports = {
     };
     //Formatting the output to return in a new line and plug in the output variables
     function formatJoke(joke) {
-      return [
-        'Knock, knock.',
-        'Wer ist da?',
-        joke.name + '.',
-        joke.name + ' wer?',
-        joke.name + ' ' + joke.answer,
-      ].join('\n');
+      return ['Knock, knock.', 'Wer ist da?', joke.name + '.', joke.name + ' wer?', joke.name + ' ' + joke.answer].join(
+        '\n'
+      );
     }
     await interaction.reply(knock());
   }, // interaction F
