@@ -4,8 +4,11 @@
   "description": "",
   "main": "main.js",
   "type": "module",
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  },
   "scripts": {
-    "start": "npm run database-generate && node main.js",
+    "start": "npx prisma generate && node main.js",
     "database-schema": "npx prisma migrate dev --name init",
     "database-generate": "npx prisma generate",
     "deploy-commands": "node .\\Utils\\deploy_commands.js",
