@@ -24,17 +24,18 @@ export default {
       if (!roleIdObject) return;
       if (!roleIdObject.autorole) return;
 
-      const positionBotRole = member.guild.members.me.roles.highest.position
+      const botRole = member.guild.members.me.roles.highest;
       const roleToAdd = member.guild.roles.cache.get(roleIdObject.autorole);
 
       //Check if role exists on server
       if (!roleToAdd) return;
 
       //Check if bot has permission to assign role
-      if(positionBotRole > roleToAdd.position) {
+      if(botRole.position > roleToAdd.position) {
         await member.roles.add(roleIdObject.autorole);
         return;
       }
+      //TODO: send error message
       //console.log("Fehler! Botrole ist zu niedrig!");
 
 
