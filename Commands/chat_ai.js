@@ -22,7 +22,7 @@ export default {
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
-        model: 'text-davinci-003',
+        model: 'text-davinci-002',
         prompt: args,
         temperature: 0.9,
         max_tokens: 256,
