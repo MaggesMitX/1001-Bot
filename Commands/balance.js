@@ -5,7 +5,7 @@ export default {
   async execute(interaction) {
       await interaction.deferReply();
 
-      if(!interaction.client.prisma) {
+      if (!interaction.client.prisma) {
           await interaction.editReply('Derzeit ist keine Datenbankverbindung aktiv!');
           return;
       }
@@ -23,7 +23,7 @@ export default {
               },
           });
 
-          if(!response) {
+          if (!response) {
               await interaction.editReply('Es ist ein Fehler beim Abfragen aufgetreten!');
               return;
           }
