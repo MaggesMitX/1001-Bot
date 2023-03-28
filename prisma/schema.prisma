@@ -8,10 +8,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//serverid, servername, one autorole_id
+// serverid, servername, one autorole_id
 model Server {
-  id        Int      @id @default(autoincrement())
-  serverid  String     @unique
-  name      String
-  autorole  String?
+  id       Int     @id @default(autoincrement())
+  serverid String  @unique
+  name     String
+  autorole String?
+}
+
+// id, userid, currency
+model Currency {
+  id       Int    @id @default(autoincrement())
+  userid   String @unique
+  currency BigInt
 }
