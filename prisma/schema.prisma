@@ -22,3 +22,13 @@ model Currency {
   userid   String @unique
   currency BigInt
 }
+
+// id, userid, currency
+model Currency_log {
+  id Int @id @default(autoincrement())
+  userid   String
+  loggedAt  DateTime   @default(now())
+  old_currency BigInt   @default(0)
+  new_currency BigInt
+  action String
+}
