@@ -1,9 +1,12 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Flood } from 'discord-gamecord';
+import {addMoney, removeMoney, getMoney} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('flood').setDescription('Spiele Flood').setDMPermission(false),
   async execute(interaction) {
+
+
     const Game = new Flood({
       message: interaction,
       isSlashGame: true,
@@ -21,8 +24,25 @@ export default {
     });
 
     await Game.startGame();
-    await Game.on('gameOver', (result) => {
+    await Game.on('gameOver', async (result) => {
       //console.log(result);  // =>  { result... }
+      if (result.result === 'win') {
+        await addMoney(interaction.client.prisma, interaction.user.id, 20, "Win Flood");
+        await interaction.followUp({content: "Du hast 20 Coins erhalten!", ephemeral: true});
+        return;
+      }
+
+      const userMoney = await getMoney(interaction.client.prisma, interaction.user.id);
+
+      if (userMoney < 15) {
+        await interaction.followUp({content: "Du kannst deine Schulden nicht mehr bezahlen!", ephemeral: true});
+        return;
+      }
+
+      await removeMoney(interaction.client.prisma, interaction.user.id, 15, "Lose Flood");
+      await interaction.followUp({content: "Du hast 15 Coins verloren!", ephemeral: true});
+
+
     });
   },
 };

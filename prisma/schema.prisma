@@ -16,19 +16,19 @@ model Server {
   autorole String?
 }
 
-// id, userid, currency
-model Currency {
-  id       Int    @id @default(autoincrement())
+model User {
+  id        Int      @id @default(autoincrement())
   userid   String @unique
-  currency BigInt
+  balance   Int    @default(0)
+  createdAt DateTime @default(now())
+  transactions Transaction[]
 }
 
-// id, userid, currency
-model Currency_log {
-  id Int @id @default(autoincrement())
-  userid   String
-  loggedAt  DateTime   @default(now())
-  old_currency BigInt   @default(0)
-  new_currency BigInt
-  action String
+model Transaction {
+  id        Int     @id @default(autoincrement())
+  userId    String
+  type      String
+  amount    Int
+  user      User    @relation(fields: [userId], references: [userid])
+  createdAt DateTime @default(now())
 }
