@@ -79,3 +79,32 @@ export async function getMoney(prisma, discordId) {
     }
     return user.balance;
 }
+
+export async function handleGameEnd(interaction, result, gameName, coinsWin, coinsLose) {
+    if (!interaction) {
+        throw new Error('Interaction not found');
+    }
+    if (!result) {
+        throw new Error('Result not found');
+    }
+    if (!gameName) {
+        throw new Error('User not found');
+    }
+
+    if (result.result === 'win') {
+        await addMoney(interaction.client.prisma, interaction.user.id, coinsWin, `Win ${gameName}`);
+        await interaction.followUp({ content: `Du hast ${coinsWin} Coins erhalten 😎`, ephemeral: true });
+        return;
+    }
+
+    const userMoney = await getMoney(interaction.client.prisma, interaction.user.id);
+
+    if (userMoney < coinsLose) {
+        await interaction.followUp({ content: "Du kannst deine Schulden nicht mehr bezahlen! 😰", ephemeral: true });
+        return;
+    }
+
+    await removeMoney(interaction.client.prisma, interaction.user.id, coinsLose, `Lose ${gameName}`);
+    await interaction.followUp({ content: `Du hast ${coinsLose} Coins verloren! 👾`, ephemeral: true });
+
+}
