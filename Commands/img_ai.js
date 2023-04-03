@@ -40,7 +40,13 @@ export default {
         body: JSON.stringify(body),
       });
 
+
       const imageUrl = await rawResponse.json();
+
+      if (imageUrl.error) {
+        await interaction.editReply('Die KI ist derzeit nicht erreichbar, versuche es später erneut!');
+        return;
+      }
 
       const embed = new EmbedBuilder()
         .setDescription(`Bild angefordert von ${interaction.user.username}`)
