@@ -4,14 +4,14 @@ import * as data from '../config.json' assert { type: 'json' };
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('imagine')
-    .setDescription('Lässt dir von OpenAI ein Bild generieren')
-    .addStringOption((option) =>
-      option
-        .setName('beschreibung')
-        .setDescription('Bildbeschreibung, lass deinen Gefühlen freien lauf...')
-        .setRequired(true)
-    ),
+      .setName('imagine')
+      .setDescription('Lässt dir von OpenAI ein Bild generieren')
+      .addStringOption((option) =>
+          option
+              .setName('beschreibung')
+              .setDescription('Bildbeschreibung, lass deinen Gefühlen freien lauf...')
+              .setRequired(true)
+      ),
   async execute(interaction) {
     const args = interaction.options.get('beschreibung')?.value.trim();
 
@@ -40,14 +40,20 @@ export default {
         body: JSON.stringify(body),
       });
 
+
       const imageUrl = await rawResponse.json();
 
+      if (imageUrl.error) {
+        await interaction.editReply('Die KI ist derzeit nicht erreichbar, versuche es später erneut!');
+        return;
+      }
+
       const embed = new EmbedBuilder()
-        .setDescription(`Bild angefordert von ${interaction.user.username}`)
-        .setTitle(args)
-        .setImage(imageUrl.data[0].url)
-        .setColor('Random')
-        .setTimestamp(Date.now());
+          .setDescription(`Bild angefordert von ${interaction.user.username}`)
+          .setTitle(args)
+          .setImage(imageUrl.data[0].url)
+          .setColor('Random')
+          .setTimestamp(Date.now());
       await interaction.editReply({
         embeds: [embed],
       });
