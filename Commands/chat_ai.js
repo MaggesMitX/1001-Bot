@@ -38,10 +38,8 @@ export default {
         body: JSON.stringify(body),
       });
 
-
       const response = await rawResponse.json();
 
-      console.log(response);
       if (response.error) {
         await interaction.editReply('Die KI ist derzeit nicht erreichbar, versuche es später erneut!');
         return;
@@ -55,9 +53,11 @@ export default {
           .setColor('Random')
           .setTimestamp(Date.now())
           .setFooter({ text: 'Vielen Dank!' });
+
       await interaction.editReply({
         embeds: [embed],
       });
+
     } catch (error) {
       console.error(error);
       await interaction.editReply('Bei der Erstellung des Bildes ist ein Fehler aufgetreten.');

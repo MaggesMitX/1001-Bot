@@ -40,7 +40,6 @@ export default {
         body: JSON.stringify(body),
       });
 
-
       const imageUrl = await rawResponse.json();
 
       if (imageUrl.error) {
@@ -54,9 +53,11 @@ export default {
         .setImage(imageUrl.data[0].url)
         .setColor('Random')
         .setTimestamp(Date.now());
+
       await interaction.editReply({
         embeds: [embed],
       });
+
     } catch (error) {
       console.error(error);
       await interaction.editReply('Bei der Erstellung des Bildes ist ein Fehler aufgetreten.');
