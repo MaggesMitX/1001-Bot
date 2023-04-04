@@ -16,7 +16,7 @@ export default {
           const response = await interaction.client.prisma.user.findMany({
               take: 10,
               orderBy: {
-                      balance: 'asc',
+                      balance: 'desc',
                   },
           });
 
