@@ -34,7 +34,7 @@ export default {
           for (const player in response) {
               embed.addFields({
                   name: `#${i}`,
-                  value: `${response[player].userid}`,
+                  value: `@${response[player].userid}`,
                   inline: false,
               });
               i++;
