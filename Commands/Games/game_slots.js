@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Slots } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('slots').setDescription('Spiele Slots').setDMPermission(false),
@@ -17,6 +18,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Slots", 10, 5);
     });
   },
 };

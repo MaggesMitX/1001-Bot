@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Trivia } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('trivia').setDescription('Spiele Trivia').setDMPermission(false),
@@ -27,6 +28,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Trivia", 2, 1);
     });
   },
 };

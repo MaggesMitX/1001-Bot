@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { RockPaperScissors } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -54,6 +55,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "RockPaperScissors", 10, 5);
     });
   },
 };

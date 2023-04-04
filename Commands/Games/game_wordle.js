@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Wordle } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('wordle').setDescription('Spiele Wordle').setDMPermission(false),
@@ -21,6 +22,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Wordle", 10, 5);
     });
   },
 };

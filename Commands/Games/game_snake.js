@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Snake } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('snake').setDescription('Spiele Snake').setDMPermission(false),
@@ -30,6 +31,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Snake", 10, 5);
     });
   },
 };

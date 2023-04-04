@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Connect4 } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -48,6 +49,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);
+      handleGameEnd(interaction, result, "Connect4", 10, 5);
     });
   },
 };

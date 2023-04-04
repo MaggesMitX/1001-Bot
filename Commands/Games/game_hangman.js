@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Hangman } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('hangman').setDescription('Spiele Hangman').setDMPermission(false),
@@ -24,8 +25,8 @@ export default {
 
     await Game.startGame();
     await Game.on('gameOver', (result) => {
-      interaction.editReply('Verloren');
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Hangman", 10, 5);
     });
   },
 };

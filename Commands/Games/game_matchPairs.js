@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { MatchPairs } from 'discord-gamecord';
+import {handleGameEnd} from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('matchpairs').setDescription('Spiele MatchPairs').setDMPermission(false),
@@ -22,6 +23,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "MatchPairs", 10, 5);
     });
   },
 };
