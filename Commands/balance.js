@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 
-import {addMoney, removeMoney, getMoney} from "../Utils/money.js";
+import { getMoney } from "../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('balance').setDescription('Verwalte deine virtuelle Währung'),
@@ -12,7 +12,6 @@ export default {
           return;
       }
 
-
       try {
          const money = await getMoney(interaction.client.prisma, interaction.user.id);
 
@@ -22,14 +21,13 @@ export default {
               .setTimestamp(Date.now())
               .addFields({
                   name: `Geld von ${interaction.user.username}#${interaction.user.discriminator}`,
-                  value: `${money}`,
+                  value: `${money} Coins`,
                   inline: true,
               });
 
             await interaction.editReply({
               embeds: [embed],
             });
-
 
       } catch (error) {
           console.log(error);
