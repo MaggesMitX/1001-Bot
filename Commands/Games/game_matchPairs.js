@@ -11,7 +11,7 @@ export default {
       embed: {
         title: 'Paare finden',
         color: '#5865F2',
-        description: '**Klicke auf die Schaltflächen, um die Emojis den entsprechenden Paaren zuzuordnen.',
+        description: '**Klicke auf die Schaltflächen, um die Emojis den entsprechenden Paaren zuzuordnen.**',
       },
       timeoutTime: 60000,
       emojis: ['🍉', '🍇', '🍊', '🥭', '🍎', '🍏', '🥝', '🥥', '🍓', '🫐', '🍍', '🥕', '🥔'],
