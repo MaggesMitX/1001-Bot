@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Hangman } from 'discord-gamecord';
-import {handleGameEnd} from "../../Utils/money.js";
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('hangman').setDescription('Spiele Hangman').setDMPermission(false),
