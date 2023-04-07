@@ -31,7 +31,7 @@ export default {
       })
       /*  .addFields({
                 name: 'Fishy',
-                value: 'Gehe zum entspannen einfach mal fischen.',
+                value: 'Gehe zum Entspannen einfach mal fischen.',
                 inline: true
             })*/
       .addFields({
