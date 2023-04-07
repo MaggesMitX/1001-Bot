@@ -1,4 +1,3 @@
-
 export async function addMoney(prisma, discordId, amount, reason) {
     const user = await prisma.user.upsert({
         where: {
@@ -91,9 +90,7 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
         throw new Error('User not found');
     }
 
-
-
-    if(!result.winner) {
+    if(!result.winner) { //check if single-player game
         if (result.result === 'win') {
             const coinText = coinsWin === 1 ? 'Coin' : 'Coins';
 
@@ -113,7 +110,6 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
         const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
         await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
 
-
     } else {
         let winnerId = result.winner;
 
@@ -125,7 +121,6 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             loser = result.player;
             winner = result.opponent;
         }
-
 
         if (result.result === 'win') {
             const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
@@ -143,10 +138,5 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             await interaction.followUp(`${loser.username} hat ${coinsLose} Coins verloren! 👾`);
 
         }
-
-
     }
-
-
-
 }
