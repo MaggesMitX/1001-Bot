@@ -26,7 +26,7 @@ export default {
 
           const embed = new EmbedBuilder()
               .setTitle('1001 - Leaderboard')
-              .setDescription(`Top 10 Spieler`)
+              .setDescription(`**Top 10 Spieler**`)
               .setColor('#ffd600')
               .setTimestamp(Date.now())
 
