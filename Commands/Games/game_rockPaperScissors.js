@@ -55,7 +55,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "RockPaperScissors", 10, 5);
+      handleGameEnd(interaction, result, "RockPaperScissors", 20, 10);
     });
   },
 };

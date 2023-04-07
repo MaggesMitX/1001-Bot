@@ -22,7 +22,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "Wordle", 10, 5);
+      handleGameEnd(interaction, result, "Wordle", 20, 5);
     });
   },
 };

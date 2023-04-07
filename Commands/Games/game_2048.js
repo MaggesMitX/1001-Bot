@@ -26,7 +26,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "2048", 10, 5);
+      handleGameEnd(interaction, result, "2048", 30, 5);
     });
   },
 };

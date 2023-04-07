@@ -31,7 +31,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "Snake", 10, 5);
+      handleGameEnd(interaction, result, "Snake", 20, 5);
     });
   },
 };

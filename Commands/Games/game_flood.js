@@ -26,7 +26,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "Flood", 20, 5);
+      handleGameEnd(interaction, result, "Flood", 10, 5);
     });
   },
 };

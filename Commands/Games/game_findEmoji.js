@@ -27,7 +27,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
-      handleGameEnd(interaction, result, "FindEmoji", 10, 5);
+      handleGameEnd(interaction, result, "FindEmoji", 5, 5);
     });
   },
 };

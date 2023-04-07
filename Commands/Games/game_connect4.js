@@ -49,7 +49,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);
-      handleGameEnd(interaction, result, "Connect4", 10, 5);
+      handleGameEnd(interaction, result, "Connect4", 20, 10);
     });
   },
 };
