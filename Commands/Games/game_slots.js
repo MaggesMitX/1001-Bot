@@ -4,7 +4,11 @@ import { handleGameEnd, getMoney } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('slots').setDescription('Spiele Slots').setDMPermission(false)
-      .addIntegerOption((option) => option.setName("einsatz").setDescription("Wähle einen Wert zwischen 1 und 999999").setMinValue(1).setMaxValue(999999)),
+      .addIntegerOption((option) => option
+          .setName("einsatz")
+          .setDescription("Wähle einen Wert zwischen 1 und 999999")
+          .setMinValue(1)
+          .setMaxValue(999999)),
   async execute(interaction) {
     await interaction.deferReply();
 

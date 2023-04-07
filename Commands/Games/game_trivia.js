@@ -11,13 +11,12 @@ const choices = [
 
 export default {
   data: new SlashCommandBuilder().setName('trivia').setDescription('Spiele Trivia').setDMPermission(false)
-      .addStringOption((option) =>
-          option
-              .setName('difficulty')
-              .setNameLocalizations({de: 'schwierigkeit'})
-              .setDescription('Choose the difficulty of the question')
-              .setDescriptionLocalizations({de: 'Wähle die Schwierigkeit der Frage'})
-              .setChoices(...choices)),
+      .addStringOption((option) => option
+          .setName('difficulty')
+          .setNameLocalizations({de: 'schwierigkeit'})
+          .setDescription('Choose the difficulty of the question')
+          .setDescriptionLocalizations({de: 'Wähle die Schwierigkeit der Frage'})
+          .setChoices(...choices)),
   async execute(interaction) {
 
     let difficultyInput = interaction.options.get('difficulty')?.value;
