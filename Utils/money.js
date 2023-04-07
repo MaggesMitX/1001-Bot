@@ -95,8 +95,10 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
 
     if(!result.winner) {
         if (result.result === 'win') {
+            const coinText = coinsWin === 1 ? 'Coin' : 'Coins';
+
             await addMoney(interaction.client.prisma, interaction.user.id, coinsWin, `Win ${gameName}`);
-            await interaction.followUp({ content: `Du hast ${coinsWin} Coins erhalten! 😎`, ephemeral: true });
+            await interaction.followUp({ content: `Du hast ${coinsWin} ${coinText} erhalten! 😎`, ephemeral: true });
             return;
         }
 
@@ -108,7 +110,10 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
         }
 
         await removeMoney(interaction.client.prisma, interaction.user.id, coinsLose, `Lose ${gameName}`);
-        await interaction.followUp({ content: `Du hast ${coinsLose} Coins verloren! 👾`, ephemeral: true });
+        const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
+        await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
+
+
     } else {
         let winnerId = result.winner;
 
@@ -123,8 +128,9 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
 
 
         if (result.result === 'win') {
+            const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
             await addMoney(interaction.client.prisma, winner.id, coinsWin, `Win ${gameName}`);
-            await interaction.followUp(`${winner.username } hat ${coinsLose} Coins erhalten! 😎`);
+            await interaction.followUp(`${winner.username } hat ${coinsLose} ${coinText} erhalten! 😎`);
 
             const userMoney = await getMoney(interaction.client.prisma, loser.id);
 
