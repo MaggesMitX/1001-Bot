@@ -20,6 +20,7 @@ export default {
     });
 
     await Game.startGame();
+    await interaction.followUp({ content: `Errate das 5-stellige Wort, indem du es in den Chat schreibst!`, ephemeral: true });
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
       handleGameEnd(interaction, result, "Wordle", 20, 5);
