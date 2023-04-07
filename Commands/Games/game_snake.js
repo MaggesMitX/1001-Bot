@@ -22,7 +22,7 @@ export default {
         right: '➡️',
       },
       snake: { head: '🟢', body: '🟩', tail: '🟢', over: '💀' },
-      foods: ['🍎', '🍇', '🍊', '🫐', '🥕', '🥝', '🌽'],
+      foods: ['🍎', '🍇', '🍊', '🥕', '🥝', '🌽'],
       stopButton: 'Stop',
       timeoutTime: 60000,
       playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.',
