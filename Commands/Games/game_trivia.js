@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Trivia } from 'discord-gamecord';
-import {handleGameEnd} from "../../Utils/money.js";
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('trivia').setDescription('Spiele Trivia').setDMPermission(false),

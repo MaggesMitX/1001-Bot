@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { MatchPairs } from 'discord-gamecord';
-import {handleGameEnd} from "../../Utils/money.js";
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('matchpairs').setDescription('Spiele MatchPairs').setDMPermission(false),

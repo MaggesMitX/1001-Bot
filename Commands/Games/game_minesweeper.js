@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Minesweeper } from 'discord-gamecord';
-import {handleGameEnd} from "../../Utils/money.js";
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('minesweeper').setDescription('Spiele Minesweeper').setDMPermission(false),
