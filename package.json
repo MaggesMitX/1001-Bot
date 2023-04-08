@@ -8,10 +8,8 @@
     "schema": "prisma/schema.prisma"
   },
   "scripts": {
-    "start": "node main.js",
-    "database-schema": "npx prisma migrate dev --name init",
-    "database-generate": "npx prisma generate",
-    "deploy-commands": "node ./Utils/deploy_commands.js",
+    "start": "npx prisma generate &&  npx prisma migrate dev --name init && node main.js",
+    "deploy-commands": "node .\\Utils\\deploy_commands.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
