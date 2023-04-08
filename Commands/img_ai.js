@@ -4,14 +4,14 @@ import * as data from '../config.json' assert { type: 'json' };
 
 export default {
   data: new SlashCommandBuilder()
-    .setName('imagine')
-    .setDescription('Lässt dir von OpenAI ein Bild generieren')
-    .addStringOption((option) =>
-      option
-        .setName('beschreibung')
-        .setDescription('Bildbeschreibung, lass deinen Gefühlen freien lauf...')
-        .setRequired(true)
-    ),
+      .setName('imagine')
+      .setDescription('Lässt dir von OpenAI ein Bild generieren')
+      .addStringOption((option) =>
+          option
+              .setName('beschreibung')
+              .setDescription('Bildbeschreibung, lass deinen Gefühlen freien lauf...')
+              .setRequired(true)
+      ),
   async execute(interaction) {
     const args = interaction.options.get('beschreibung')?.value.trim();
 
@@ -39,6 +39,7 @@ export default {
         },
         body: JSON.stringify(body),
       });
+
 
       const imageUrl = await rawResponse.json();
 
