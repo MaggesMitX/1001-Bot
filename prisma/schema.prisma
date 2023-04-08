@@ -32,3 +32,11 @@ model Transaction {
   user      User    @relation(fields: [userId], references: [userid])
   createdAt DateTime @default(now())
 }
+
+model GlobalGameStats {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  playedAt DateTime @default(now())
+  gameName String
+  isWin Boolean @default(false)
+}

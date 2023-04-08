@@ -1,3 +1,5 @@
+import { registerGameGlobalStatsEntry } from "./globalGameStats.js";
+
 export async function addMoney(prisma, discordId, amount, reason) {
     const user = await prisma.user.upsert({
         where: {
@@ -89,8 +91,16 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
     if (!gameName) {
         throw new Error('User not found');
     }
+    if (!coinsWin) {
+        throw new Error('CoinsWin not found');
+    }
+    if (!coinsLose) {
+        throw new Error('CoinsLose not found');
+    }
+    await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
 
     if(!result.winner) { //check if single-player game
+
         if (result.result === 'win') {
             const coinText = coinsWin === 1 ? 'Coin' : 'Coins';
 
