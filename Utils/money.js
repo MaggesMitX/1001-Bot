@@ -104,32 +104,25 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             const coinText = coinsWin === 1 ? 'Coin' : 'Coins';
 
             await addMoney(interaction.client.prisma, interaction.user.id, coinsWin, `Win ${gameName}`);
-            const messageWinnerToDelete = await interaction.followUp({ content: `Du hast ${coinsWin} ${coinText} erhalten! 😎`, ephemeral: true });
-            setTimeout(async () => {
-                await messageWinnerToDelete.delete().catch((err) => console.log(err));
-            }, 10000);
-            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+            await interaction.followUp({ content: `Du hast ${coinsWin} ${coinText} erhalten! 😎`, ephemeral: true });
+
+            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'), coinsWin, 0);
             return;
         }
 
         const userMoney = await getMoney(interaction.client.prisma, interaction.user.id);
 
         if (userMoney < coinsLose) {
-            const messageLoserToDelete = await interaction.followUp({ content: "Du kannst deine Schulden nicht mehr bezahlen! 😰", ephemeral: true });
-            setTimeout(async () => {
-                await messageLoserToDelete.delete().catch((err) => console.log(err));
-            }, 10000);
-            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+            await interaction.followUp({ content: "Du kannst deine Schulden nicht mehr bezahlen! 😰", ephemeral: true });
+            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'),0, coinsLose);
             return;
         }
 
         await removeMoney(interaction.client.prisma, interaction.user.id, coinsLose, `Lose ${gameName}`);
         const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
-        const messageLoserToDelete = await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
-        setTimeout(async () => {
-            await messageLoserToDelete.delete().catch((err) => console.log(err));
-        }, 10000);
-        await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+        await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
+
+        await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'), 0, coinsLose);
 
     } else {
         let winnerId = result.winner;
@@ -151,6 +144,7 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
         setTimeout(async () => {
             await messageWinnerToDelete.delete().catch((err) => console.log(err));
         }, 10000);
+        await registerGameGlobalStatsEntry(interaction, winner.id, gameName, (result.result === 'win'), coinsWin, 0);
 
         const userMoney = await getMoney(interaction.client.prisma, loser.id);
 
@@ -159,7 +153,7 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             setTimeout(async () => {
                 await messageLoserToDelete.delete().catch((err) => console.log(err));
             }, 10000);
-            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+            await registerGameGlobalStatsEntry(interaction, loser.id, gameName, (result.result === 'win'), coinsWin, coinsLose);
             return;
         }
 
@@ -168,7 +162,7 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
         setTimeout(async () => {
             await messageLoserToDelete.delete().catch((err) => console.log(err));
         }, 10000);
-        await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+        await registerGameGlobalStatsEntry(interaction, loser.id, gameName, (result.result === 'win'), 0, coinsLose);
 
     }
 }

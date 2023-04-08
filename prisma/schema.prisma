@@ -41,4 +41,6 @@ model GlobalGameStats {
   playedAt DateTime @default(now())
   gameName String
   isWin Boolean @default(false)
+  coinsWin  Int @default(0)
+  coinsLose Int @default(0)
 }
