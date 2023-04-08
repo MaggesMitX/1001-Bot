@@ -15,8 +15,8 @@ export default {
         inline: true,
       })
       .addFields({
-        name: 'Connect4',
-        value: 'Spiele Connect4 mit deinen Freunden! (Duo-Modus)',
+        name: 'VierGewinnt',
+        value: 'Spiele VierGewinnt mit deinen Freunden! (Duo-Modus)',
         inline: true,
       })
       .addFields({
