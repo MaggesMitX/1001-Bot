@@ -1,9 +1,12 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Flood } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('flood').setDescription('Spiele Flood').setDMPermission(false),
   async execute(interaction) {
+
+
     const Game = new Flood({
       message: interaction,
       isSlashGame: true,
@@ -23,6 +26,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Flood", 10, 5);
     });
   },
 };

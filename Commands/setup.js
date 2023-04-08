@@ -6,10 +6,10 @@ export default {
     .setDescription('Einstellungen für den 1001 Bot')
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator)
     .setDMPermission(false)
-    .addStringOption((option) =>
-      option
+    .addStringOption((option) => option
         .setName('roleid')
-        .setDescription('Setze die Rollen ID, welche User beim Joinen erhalten sollen. Zum Entfernen 0 benutzten!')
+        .setDescription('Die Id der Rollen, welche User beim Joinen erhalten sollen. Zum Entfernen 0 benutzten!')
+        .setDescriptionLocalizations({de: 'Id of the role that the user should receive when joining. Use 0 to remove!'})
         .setRequired(true)
     ),
 
@@ -40,22 +40,22 @@ export default {
           },
         });
 
-        await interaction.editReply(`Der Eintrag für ${serverName} wurde gelöscht!`);
+        await interaction.editReply(`Der Eintrag für **${serverName}** wurde gelöscht! ✅`);
       } catch (error) {
-        await interaction.editReply('Es ist ein Fehler beim Löschen der AutoRole aufgetreten!');
+        await interaction.editReply('Es ist ein Fehler beim Löschen der AutoRole aufgetreten! ❌');
         console.log(error);
       }
       return;
     }
 
     if (!interaction.guild.roles.cache.get(roleId)) {
-      await interaction.editReply('Die Gruppe wurde nicht gefunden!');
+      await interaction.editReply('Die Gruppe wurde nicht gefunden! ❌');
       return;
     }
 
     //check if database object exists
     if (!interaction.client.prisma) {
-      await interaction.editReply('Derzeit besteht keine Datenbankverbindung!');
+      await interaction.editReply('Derzeit besteht keine Datenbankverbindung! ❌');
       return;
     }
 
@@ -76,10 +76,10 @@ export default {
         },
       });
 
-      await interaction.editReply(`Es wurde ein Eintrag für ${serverName} mit dem Wert ${roleId} erstellt.`);
+      await interaction.editReply(`Es wurde ein Eintrag für **${serverName}** mit dem Wert ${roleId} erstellt. ✅`);
     } catch (error) {
-      await interaction.editReply('Es ist ein Fehler beim Setzen der AutoRole aufgetreten!');
       console.log(error);
+      await interaction.editReply('Es ist ein Fehler beim Setzen der AutoRole aufgetreten! ❌');
     }
   },
 };

@@ -1,10 +1,16 @@
 import {SlashCommandBuilder, EmbedBuilder} from'discord.js';
 
 export default {
-    data: new SlashCommandBuilder().setName('meme').setDescription('zufällige memes from Reddit'),
+    data: new SlashCommandBuilder().setName('meme').setDescription('Zufällige Memes von Reddit'),
     async execute(interaction) {
+        await interaction.deferReply();
+
         const request = await fetch('https://www.reddit.com/r/memes/random/.json');
+        if(request.status !== 200) {
+            await interaction.editReply("Ich konnte keine Memes finden, versuche es später erneut!");
+        }
         const memeJson = await request.json();
+
         const embed = new EmbedBuilder();
 
         const [list] = memeJson;
@@ -23,7 +29,7 @@ export default {
         embed.setFooter({
             text: `👍 ${memeUpvotes} 💬 ${memeNumComments}`
         });
-        interaction.reply({
+        await interaction.editReply({
             embeds: [embed],
         });
     },

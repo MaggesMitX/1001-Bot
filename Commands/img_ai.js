@@ -49,14 +49,16 @@ export default {
       }
 
       const embed = new EmbedBuilder()
-          .setDescription(`Bild angefordert von ${interaction.user.username}`)
-          .setTitle(args)
-          .setImage(imageUrl.data[0].url)
-          .setColor('Random')
-          .setTimestamp(Date.now());
+        .setDescription(`Bild angefordert von ${interaction.user.username}`)
+        .setTitle(args)
+        .setImage(imageUrl.data[0].url)
+        .setColor('Random')
+        .setTimestamp(Date.now());
+
       await interaction.editReply({
         embeds: [embed],
       });
+
     } catch (error) {
       console.error(error);
       await interaction.editReply('Bei der Erstellung des Bildes ist ein Fehler aufgetreten.');

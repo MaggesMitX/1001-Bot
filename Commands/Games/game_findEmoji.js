@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { FindEmoji } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('findemoji').setDescription('Spiele FindEmoji').setDMPermission(false),
@@ -26,6 +27,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "FindEmoji", 5, 5);
     });
   },
 };

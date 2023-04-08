@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { MatchPairs } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('matchpairs').setDescription('Spiele MatchPairs').setDMPermission(false),
@@ -10,7 +11,7 @@ export default {
       embed: {
         title: 'Paare finden',
         color: '#5865F2',
-        description: '**Klicke auf die Schaltflächen, um die Emojis den entsprechenden Paaren zuzuordnen.',
+        description: '**Klicke auf die Schaltflächen, um die Emojis den entsprechenden Paaren zuzuordnen.**',
       },
       timeoutTime: 60000,
       emojis: ['🍉', '🍇', '🍊', '🥭', '🍎', '🍏', '🥝', '🥥', '🍓', '🫐', '🍍', '🥕', '🥔'],
@@ -22,6 +23,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "MatchPairs", 15, 5);
     });
   },
 };

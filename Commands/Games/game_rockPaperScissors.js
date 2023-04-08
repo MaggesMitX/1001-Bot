@@ -1,21 +1,20 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { RockPaperScissors } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
-  data: new SlashCommandBuilder()
-    .setName('rockpaperscissor')
-    .setDescription('Spiele Schere, Stein, Papier')
-    .setDMPermission(false)
-    .setNameLocalizations({
-      de: 'scheresteinpapier',
-    })
-    .addUserOption((option) => option.setName('member').setDescription('Gegner').setRequired(true)),
+  data: new SlashCommandBuilder().setName('rockpaperscissor').setDescription('Spiele Schere, Stein, Papier')
+      .setDMPermission(false).setNameLocalizations({de: 'scheresteinpapier'})
+      .addUserOption((option) => option
+          .setName('member').setNameLocalizations({de: 'spieler'})
+          .setDescription('Name of opponent').setDescriptionLocalizations({de: 'Name des Gegners'})
+          .setRequired(true)),
   async execute(interaction) {
     const target = interaction.options.getUser('member');
 
-    if (!target) {
-      return interaction.reply('Es wurde kein Mitspieler angegeben!');
-    }
+    if (!target) return interaction.reply('Es wurde kein Mitspieler angegeben!');
+
+    if (target === interaction.user) return interaction.reply('Gib einen anderen Spieler an!');
 
     const Game = new RockPaperScissors({
       message: interaction,
@@ -54,6 +53,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "RockPaperScissors", 20, 10);
     });
   },
 };

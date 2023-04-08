@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { Snake } from 'discord-gamecord';
+import { handleGameEnd } from "../../Utils/money.js";
 
 export default {
   data: new SlashCommandBuilder().setName('snake').setDescription('Spiele Snake').setDMPermission(false),
@@ -21,7 +22,7 @@ export default {
         right: '➡️',
       },
       snake: { head: '🟢', body: '🟩', tail: '🟢', over: '💀' },
-      foods: ['🍎', '🍇', '🍊', '🫐', '🥕', '🥝', '🌽'],
+      foods: ['🍎', '🍇', '🍊', '🥕', '🥝', '🌽'],
       stopButton: 'Stop',
       timeoutTime: 60000,
       playerOnlyMessage: 'Nur {player} kann diese Schaltfläche verwenden.',
@@ -30,6 +31,7 @@ export default {
     await Game.startGame();
     await Game.on('gameOver', (result) => {
       //console.log(result);  // =>  { result... }
+      handleGameEnd(interaction, result, "Snake", 20, 5);
     });
   },
 };

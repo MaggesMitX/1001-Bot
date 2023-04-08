@@ -8,10 +8,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//serverid, servername, one autorole_id
+// serverid, servername, one autorole_id
 model Server {
+  id       Int     @id @default(autoincrement())
+  serverid String  @unique
+  name     String
+  autorole String?
+}
+
+model User {
   id        Int      @id @default(autoincrement())
-  serverid  String     @unique
-  name      String
-  autorole  String?
+  userid   String @unique
+  balance   Int    @default(0)
+  createdAt DateTime @default(now())
+  transactions Transaction[]
+  globalGameStats GlobalGameStats[]
+}
+
+model Transaction {
+  id        Int     @id @default(autoincrement())
+  userId    String
+  type      String
+  amount    Int
+  user      User    @relation(fields: [userId], references: [userid])
+  createdAt DateTime @default(now())
+}
+
+model GlobalGameStats {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User    @relation(fields: [userId], references: [userid])
+  playedAt DateTime @default(now())
+  gameName String
+  isWin Boolean @default(false)
+  coinsWin  Int @default(0)
+  coinsLose Int @default(0)
 }
