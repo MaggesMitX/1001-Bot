@@ -1,5 +1,4 @@
 import { Events, PermissionsBitField } from 'discord.js';
-import {c} from "prisma/build/public/assets/vendor.js";
 
 const rateLimitInterval = 3000;
 const rateLimitMaxMessages = 3;
