@@ -15,9 +15,7 @@ export default {
       try {
           const response = await interaction.client.prisma.user.findMany({
               take: 10,
-              orderBy: {
-                      balance: 'desc',
-                  },
+              orderBy: {balance: 'desc'},
           });
 
           if (Object.keys(response).length === 0)
@@ -30,20 +28,20 @@ export default {
               .setColor('#ffd600')
               .setTimestamp(Date.now())
 
-          let i = 1;
-          for (const player in response) {
+          for (let i = 0; i < response.length; i++) {
+              const player = response[i];
+              const userCoins = player.balance;
+              const coinText = userCoins === 1 ? 'Coin' : 'Coins';
               embed.addFields({
-                  name: `#${i}`,
-                  value: `<@${response[player].userid}>`,
+                  name: `#${i+1}`,
+                  value: `<@${player.userid}> (${userCoins} ${coinText})`,
                   inline: false,
               });
-              i++;
           }
 
           await interaction.editReply({
               embeds: [embed],
           });
-
 
       } catch (error) {
           console.log(error);
