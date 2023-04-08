@@ -14,6 +14,8 @@ export default {
 
     if (!target) return interaction.reply('Es wurde kein Mitspieler angegeben!');
 
+    if (target === interaction.user) return interaction.reply('Gib einen anderen Spieler an!');
+
     const Game = new RockPaperScissors({
       message: interaction,
       isSlashGame: true,

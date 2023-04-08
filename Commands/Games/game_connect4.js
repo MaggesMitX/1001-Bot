@@ -13,6 +13,8 @@ export default {
 
     if (!target) return interaction.reply('Es wurde kein Mitspieler angegeben!');
 
+    if (target === interaction.user) return interaction.reply('Gib einen anderen Spieler an!');
+
     const Game = new Connect4({
       message: interaction,
       isSlashGame: true,
