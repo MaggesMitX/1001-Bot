@@ -11,8 +11,9 @@ COPY prisma ./prisma/
 
 RUN npm install
 RUN npm run database-generate
-RUN npm run database-schema
 
 COPY . .
+
+EXPOSE 3001
 
 CMD ["npm", "run", "start"]
