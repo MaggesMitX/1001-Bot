@@ -46,7 +46,7 @@ export default {
       })
       .addFields({
         name: 'Hangman',
-        value: 'Spiele Hangman mit deinen Freunden.',
+        value: 'Kannst du die richtigen Buchstaben finden?',
         inline: true,
       })
       .addFields({
