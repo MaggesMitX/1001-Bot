@@ -97,7 +97,6 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
     if (!coinsLose) {
         throw new Error('CoinsLose not found');
     }
-    await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
 
     if(!result.winner) { //check if single-player game
 
@@ -105,20 +104,32 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             const coinText = coinsWin === 1 ? 'Coin' : 'Coins';
 
             await addMoney(interaction.client.prisma, interaction.user.id, coinsWin, `Win ${gameName}`);
-            await interaction.followUp({ content: `Du hast ${coinsWin} ${coinText} erhalten! 😎`, ephemeral: true });
+            const messageWinnerToDelete = await interaction.followUp({ content: `Du hast ${coinsWin} ${coinText} erhalten! 😎`, ephemeral: true });
+            setTimeout(async () => {
+                await messageWinnerToDelete.delete().catch((err) => console.log(err));
+            }, 10000);
+            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
             return;
         }
 
         const userMoney = await getMoney(interaction.client.prisma, interaction.user.id);
 
         if (userMoney < coinsLose) {
-            await interaction.followUp({ content: "Du kannst deine Schulden nicht mehr bezahlen! 😰", ephemeral: true });
+            const messageLoserToDelete = await interaction.followUp({ content: "Du kannst deine Schulden nicht mehr bezahlen! 😰", ephemeral: true });
+            setTimeout(async () => {
+                await messageLoserToDelete.delete().catch((err) => console.log(err));
+            }, 10000);
+            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
             return;
         }
 
         await removeMoney(interaction.client.prisma, interaction.user.id, coinsLose, `Lose ${gameName}`);
         const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
-        await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
+        const messageLoserToDelete = await interaction.followUp({ content: `Du hast ${coinsLose} ${coinText} verloren! 👾`, ephemeral: true });
+        setTimeout(async () => {
+            await messageLoserToDelete.delete().catch((err) => console.log(err));
+        }, 10000);
+        await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
 
     } else {
         let winnerId = result.winner;
@@ -132,21 +143,32 @@ export async function handleGameEnd(interaction, result, gameName, coinsWin, coi
             winner = result.opponent;
         }
 
-        if (result.result === 'win') {
-            const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
-            await addMoney(interaction.client.prisma, winner.id, coinsWin, `Win ${gameName}`);
-            await interaction.followUp(`${winner.username } hat ${coinsLose} ${coinText} erhalten! 😎`);
 
-            const userMoney = await getMoney(interaction.client.prisma, loser.id);
+        const coinText = coinsLose === 1 ? 'Coin' : 'Coins';
+        await addMoney(interaction.client.prisma, winner.id, coinsWin, `Win ${gameName}`);
+        const messageWinnerToDelete = await interaction.followUp(`${winner.username } hat ${coinsLose} ${coinText} erhalten! 😎`);
 
-            if (userMoney < coinsLose) {
-                await interaction.followUp(`${loser.username} kann seine Schulden nicht mehr bezahlen! 😰`);
-                return;
-            }
+        setTimeout(async () => {
+            await messageWinnerToDelete.delete().catch((err) => console.log(err));
+        }, 10000);
 
-            await removeMoney(interaction.client.prisma, loser.id, coinsLose, `Lose ${gameName}`);
-            await interaction.followUp(`${loser.username} hat ${coinsLose} Coins verloren! 👾`);
+        const userMoney = await getMoney(interaction.client.prisma, loser.id);
 
+        if (userMoney < coinsLose) {
+            const messageLoserToDelete = interaction.followUp(`${loser.username} kann seine Schulden nicht mehr bezahlen! 😰`);
+            setTimeout(async () => {
+                await messageLoserToDelete.delete().catch((err) => console.log(err));
+            }, 10000);
+            await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+            return;
         }
+
+        await removeMoney(interaction.client.prisma, loser.id, coinsLose, `Lose ${gameName}`);
+        const messageLoserToDelete = await interaction.followUp(`${loser.username} hat ${coinsLose} Coins verloren! 👾`);
+        setTimeout(async () => {
+            await messageLoserToDelete.delete().catch((err) => console.log(err));
+        }, 10000);
+        await registerGameGlobalStatsEntry(interaction, interaction.user.id, gameName, (result.result === 'win'));
+
     }
 }
