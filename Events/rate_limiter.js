@@ -1,4 +1,5 @@
 import { Events, PermissionsBitField } from 'discord.js';
+import {c} from "prisma/build/public/assets/vendor.js";
 
 const rateLimitInterval = 3000;
 const rateLimitMaxMessages = 3;
@@ -36,17 +37,18 @@ export default {
     if (timeSinceLastMessage < rateLimitInterval) userData.messagsSent++;
 
     if (userData.messagsSent > rateLimitMaxMessages) {
-      await message.reply('Bitte passe deine Chatgeschwindigkeit an! 🤠');
-      await user
-        .timeout(
-          timeoutLength,
-          `Der User ${user.user.username}#${user.user.discriminator} (${user.user.id}) wurde für ${
-            timeoutLength / 1000
-          } Sekunden wegen Spamming getimeouted.`
-        )
-        .catch((error) => {
-          console.log(error);
-        });
+      try {
+        await message.reply('Bitte passe deine Chatgeschwindigkeit an! 🤠');
+        await user
+            .timeout(
+                timeoutLength,
+                `Der User ${user.user.username}#${user.user.discriminator} (${user.user.id}) wurde für ${
+                    timeoutLength / 1000
+                } Sekunden wegen Spamming getimeouted.`
+            );
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     client.rateLimiter.set(user.id, { ...userData, timestamp: Date.now() });
