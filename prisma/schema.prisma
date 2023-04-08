@@ -22,6 +22,7 @@ model User {
   balance   Int    @default(0)
   createdAt DateTime @default(now())
   transactions Transaction[]
+  globalGameStats GlobalGameStats[]
 }
 
 model Transaction {
@@ -36,6 +37,7 @@ model Transaction {
 model GlobalGameStats {
   id        Int      @id @default(autoincrement())
   userId    String
+  user      User    @relation(fields: [userId], references: [userid])
   playedAt DateTime @default(now())
   gameName String
   isWin Boolean @default(false)
