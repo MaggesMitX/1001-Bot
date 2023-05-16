@@ -16,7 +16,7 @@ export default {
         status: 'online',
       },
       {
-        activity: { name: 'In der Bibliothek schreien', type: ActivityType.Playing },
+        activity: { name: 'Elden Ring', type: ActivityType.Playing },
         status: 'online',
       },
       {
@@ -28,77 +28,77 @@ export default {
       },
       {
         activity: {
-          name: 'Mathe(by Daniel Jung)',
+          name: 'Mathe 2 Vorlesungen',
           type: ActivityType.Watching,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'I’m not lazy, I’m on energy saving mode',
+          name: 'fecten mit Burak',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Isst in der Mensa',
+          name: 'Schach',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Pokémon Go mit Max',
+          name: 'Zelda durch Akkala hetzen',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Minecraft Bedwars',
+          name: 'Coding mit Kai',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Spotting im Gym',
+          name: 'GYM Live!',
           type: ActivityType.Streaming,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Be the game-changer.',
+          name: 'Nicks Coding Lessons',
           type: ActivityType.Streaming,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Error-404. Not found',
+          name: 'TH Köln Memes',
           type: ActivityType.Watching,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'mit brandgefährlichen C-Pointern 🔥',
+          name: 'gegen die Zeit🔥',
           type: ActivityType.Competing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Einsätze Koordinieren 🔥',
+          name: 'Nachrichten lesen',
           type: ActivityType.Playing,
         },
         status: 'online',
       },
       {
         activity: {
-          name: 'Ai Funktionen überprüfen..',
+          name: 'Youtube Tutorials',
           type: ActivityType.Watching,
         },
         status: 'dnd',
